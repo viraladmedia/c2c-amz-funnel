@@ -302,6 +302,63 @@
     .learn-col-grid { grid-template-columns: 1fr; }
     .cta-btn { font-size: 17px; padding: 16px 32px; }
   }
+
+  /* ── EXIT-INTENT / CTA POPUP ── */
+  .popup-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    z-index: 9999;
+    padding: 20px;
+    overflow-y: auto;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .popup-overlay.active { display: flex; }
+  .popup-box {
+    background: var(--white);
+    border-radius: 8px;
+    max-width: 760px;
+    width: 100%;
+    margin: 30px auto;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    overflow: hidden;
+  }
+  .popup-header {
+    background: var(--dark);
+    color: var(--white);
+    text-align: center;
+    padding: 28px 50px 22px;
+    position: relative;
+  }
+  .popup-header h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(20px, 3.5vw, 28px);
+    text-transform: uppercase;
+    line-height: 1.25;
+  }
+  .popup-header h2 span { color: var(--gold); }
+  .popup-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    color: var(--white);
+    border: none;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s;
+  }
+  .popup-close:hover { background: rgba(255,255,255,0.25); }
+  .popup-body { padding: 0; background: #f4f4f4; }
 </style>
 </head>
 <body>
@@ -503,7 +560,7 @@
   <div style="max-width:700px;margin:0 auto;">
     <h2>Would You Rather Book a <span>1:1 Call</span> with Luqman?</h2>
     <p>Spots are strictly limited. Secure your free access to the Mastermind right now before this page comes down.</p>
-    <a href="#" class="cta-btn">👉 YES! I Want FREE Access Now</a>
+    <a href="#" class="cta-btn" onclick="openBookingPopup(event)">👉 YES! I Want FREE Access Now</a>
     <p class="cta-sub">🔒 Secure Page &nbsp;|&nbsp; 100% Free &nbsp;|&nbsp; No Credit Card Required</p>
     <p style="color:#666;font-size:13px;margin-top:20px;">⚠️ I cannot guarantee the video will be there for long — register now!</p>
   </div>
@@ -523,6 +580,62 @@
 <footer>
   <p>© 2026 C2C AMZ Framework &nbsp;|&nbsp; Viral Ad Media, LLC &nbsp;|&nbsp; All Rights Reserved</p>
 </footer>
+
+<!-- BOOKING / EXIT-INTENT POPUP -->
+<div class="popup-overlay" id="bookingPopup">
+  <div class="popup-box">
+    <div class="popup-header">
+      <button class="popup-close" onclick="closeBookingPopup()" aria-label="Close">✕</button>
+      <h2>Would You Rather Book a <span>1:1 Call</span> with Luqman?</h2>
+    </div>
+    <div class="popup-body">
+      <!-- Calendly inline widget begin -->
+      <div class="calendly-inline-widget" data-url="https://calendly.com/viraladmediacalendar/group-call?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=008080" style="min-width:320px;height:700px;"></div>
+      <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+      <!-- Calendly inline widget end -->
+    </div>
+  </div>
+</div>
+
+<script>
+  function openBookingPopup(e) {
+    if (e) e.preventDefault();
+    document.getElementById('bookingPopup').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeBookingPopup() {
+    document.getElementById('bookingPopup').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  // Close on overlay click (outside the box)
+  document.getElementById('bookingPopup').addEventListener('click', function(e) {
+    if (e.target === this) closeBookingPopup();
+  });
+  // Close on Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeBookingPopup();
+  });
+
+  // ── EXIT-INTENT TRIGGER ──
+  let exitIntentShown = false;
+  document.addEventListener('mouseout', function(e) {
+    if (exitIntentShown) return;
+    if (!e.relatedTarget && !e.toElement && e.clientY <= 0) {
+      exitIntentShown = true;
+      openBookingPopup();
+    }
+  });
+  // Mobile fallback: trigger once after a delay of inactivity scroll-up near top (optional, lightweight)
+  let lastScrollY = window.scrollY;
+  window.addEventListener('scroll', function() {
+    if (exitIntentShown) return;
+    if (window.scrollY < lastScrollY && window.scrollY < 100 && window.innerWidth <= 768) {
+      exitIntentShown = true;
+      openBookingPopup();
+    }
+    lastScrollY = window.scrollY;
+  });
+</script>
 
 </body>
 </html>
