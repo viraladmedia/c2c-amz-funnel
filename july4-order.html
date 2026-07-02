@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🇺🇸 July 4th Special – Amazon + Walmart + TikTok Framework</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --orange:#FF9900;
+  --orange-dark:#e68a00;
+  --orange-light:#FFB347;
+  --navy:#232F3E;
+  --navy-light:#37475A;
+  --navy-dark:#131A22;
+  --white:#FFFFFF;
+  --off-white:#F9F9F7;
+  --gray:#6B7280;
+  --light-gray:#F3F4F6;
+  --green:#16a34a;
+  --green-bg:#f0fdf4;
+  --red:#DC2626;
+  --gold:#FFD700;
+  --border:#E5E7EB;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Open Sans',sans-serif;background:var(--white);color:var(--navy-dark);font-size:16px;line-height:1.6;overflow-x:hidden}
+
+/* ── ANNOUNCEMENT BAR ── */
+.ann-bar{background:var(--red);color:#fff;text-align:center;padding:10px 16px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;letter-spacing:.5px;position:sticky;top:0;z-index:1000}
+.ann-bar span{color:var(--gold)}
+
+/* ── STICKY MOBILE CTA ── */
+.sticky-mob{display:none;position:fixed;bottom:0;left:0;right:0;z-index:999;padding:12px 16px;background:var(--navy-dark);border-top:3px solid var(--orange);box-shadow:0 -4px 20px rgba(0,0,0,.4)}
+.sticky-mob a{display:block;background:linear-gradient(135deg,var(--orange),var(--orange-dark));color:var(--navy-dark);text-align:center;padding:14px;border-radius:8px;font-family:'Montserrat',sans-serif;font-weight:900;font-size:16px;text-decoration:none;text-transform:uppercase;letter-spacing:.5px}
+@media(max-width:768px){.sticky-mob{display:block}}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(160deg,var(--navy-dark) 0%,#1a2535 40%,#0d1b2a 100%);color:var(--white);padding:50px 20px 40px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(255,153,0,.12) 0%,transparent 65%)}
+.hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1}
+.july4-badge{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:7px 18px;border-radius:20px;margin-bottom:22px;border:2px solid rgba(255,255,255,.25)}
+.hero h1{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(26px,5.5vw,58px);line-height:1.1;text-transform:uppercase;margin-bottom:18px;letter-spacing:-1px}
+.hero h1 .orange{color:var(--orange)}
+.hero h1 .strike-thru{text-decoration:line-through;opacity:.4;font-size:.65em}
+.hero-sub{font-size:clamp(15px,2.2vw,20px);color:rgba(255,255,255,.85);max-width:700px;margin:0 auto 32px;line-height:1.6}
+.hero-sub strong{color:var(--orange)}
+
+/* ── COUNTDOWN ── */
+.countdown-wrap{background:rgba(255,255,255,.06);border:1px solid rgba(255,153,0,.3);border-radius:12px;padding:20px 28px;display:inline-block;margin:0 auto 32px;backdrop-filter:blur(4px)}
+.countdown-label{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
+.countdown-digits{display:flex;gap:12px;align-items:center;justify-content:center}
+.cd-block{display:flex;flex-direction:column;align-items:center}
+.cd-num{background:var(--orange);color:var(--navy-dark);font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(28px,5vw,48px);width:clamp(64px,10vw,88px);height:clamp(64px,10vw,88px);border-radius:8px;display:flex;align-items:center;justify-content:center;line-height:1;box-shadow:0 4px 16px rgba(255,153,0,.4)}
+.cd-sep{font-size:clamp(24px,4vw,40px);font-weight:900;color:var(--orange);margin-top:-16px}
+.cd-unit{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:6px}
+.hero-urgency{font-size:13px;color:rgba(255,255,255,.55);margin-top:10px;font-style:italic}
+
+/* ── PRICE HERO ── */
+.price-hero{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px;margin:28px auto 32px}
+.price-was{text-align:center}
+.price-was .label{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px}
+.price-was .amount{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(28px,4vw,44px);color:rgba(255,255,255,.35);text-decoration:line-through}
+.price-arrow{font-size:32px;color:var(--orange)}
+.price-now{text-align:center;background:linear-gradient(135deg,rgba(255,153,0,.2),rgba(255,153,0,.05));border:2px solid var(--orange);border-radius:12px;padding:16px 28px}
+.price-now .label{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:4px}
+.price-now .amount{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(48px,7vw,72px);color:var(--orange);line-height:1}
+.price-now .sub{font-size:12px;color:rgba(255,255,255,.5);margin-top:4px}
+.savings-pill{background:var(--green);color:#fff;font-family:'Montserrat',sans-serif;font-weight:800;font-size:14px;padding:8px 20px;border-radius:20px;display:inline-block;margin-top:8px}
+
+/* ── CTA BUTTON ── */
+.cta-btn{display:inline-block;background:linear-gradient(135deg,#FF9900 0%,#FFB347 50%,#FF9900 100%);background-size:200%;color:var(--navy-dark);font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(16px,2.5vw,22px);text-transform:uppercase;letter-spacing:.5px;padding:20px 48px;border-radius:50px;text-decoration:none;border:none;cursor:pointer;box-shadow:0 8px 32px rgba(255,153,0,.5);animation:ctapulse 2s ease-in-out infinite;transition:transform .15s;display:inline-block;width:100%;max-width:520px}
+.cta-btn:hover{transform:scale(1.03);animation:none;background-position:right}
+@keyframes ctapulse{0%,100%{box-shadow:0 8px 32px rgba(255,153,0,.5)}50%{box-shadow:0 12px 48px rgba(255,153,0,.8)}}
+.cta-sub{font-size:12px;color:rgba(255,255,255,.45);margin-top:10px;text-align:center}
+.cta-sub span{color:var(--green);font-weight:700}
+
+/* ── TRUST BADGES ── */
+.trust-row{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:center;margin:24px auto 0;max-width:600px}
+.trust-item{display:flex;align-items:center;gap:7px;font-size:12px;color:rgba(255,255,255,.55);font-weight:600}
+.trust-item .icon{font-size:18px}
+
+/* ── SECTIONS ── */
+.section{padding:64px 20px}
+.section-inner{max-width:900px;margin:0 auto}
+.section-inner-wide{max-width:1100px;margin:0 auto}
+.section-label{display:inline-block;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--orange);border:1px solid rgba(255,153,0,.4);border-radius:20px;padding:5px 14px;margin-bottom:16px}
+.section-title{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(22px,4vw,40px);line-height:1.15;margin-bottom:12px;text-transform:uppercase}
+.section-sub{font-size:clamp(15px,2vw,18px);color:var(--gray);max-width:680px;margin:0 auto 40px;line-height:1.7}
+.text-center{text-align:center}
+
+/* ── VIDEO ── */
+.video-section{background:var(--navy-dark);padding:60px 20px}
+.video-wrap{max-width:780px;margin:0 auto;position:relative;padding-bottom:56.25%;height:0;border-radius:12px;overflow:hidden;border:3px solid var(--orange);box-shadow:0 0 80px rgba(255,153,0,.3)}
+.video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%}
+.video-caption{text-align:center;color:rgba(255,255,255,.45);font-size:13px;margin-top:16px;font-style:italic}
+
+/* ── SOCIAL PROOF BAR ── */
+.proof-bar{background:var(--navy);color:var(--white);padding:18px 20px}
+.proof-bar-inner{max-width:900px;margin:0 auto;display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:center}
+.proof-stat{text-align:center}
+.proof-stat .num{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(22px,3.5vw,36px);color:var(--orange)}
+.proof-stat .lbl{font-size:12px;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:1px}
+.proof-divider{width:1px;height:48px;background:rgba(255,255,255,.1)}
+@media(max-width:600px){.proof-divider{display:none}}
+
+/* ── TRANSFORMATION ── */
+.transform-section{background:var(--off-white)}
+.before-after{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:stretch;margin-top:40px}
+@media(max-width:640px){.before-after{grid-template-columns:1fr;gap:12px}.ba-arrow{transform:rotate(90deg)}}
+.ba-card{background:var(--white);border-radius:12px;padding:28px;border:1px solid var(--border)}
+.ba-card.before{border-left:4px solid var(--red)}
+.ba-card.after{border-left:4px solid var(--green)}
+.ba-tag{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:12px;display:inline-block;margin-bottom:14px}
+.ba-tag.before-tag{background:#fee2e2;color:var(--red)}
+.ba-tag.after-tag{background:var(--green-bg);color:var(--green)}
+.ba-card h3{font-family:'Montserrat',sans-serif;font-weight:800;font-size:17px;margin-bottom:12px}
+.ba-list{list-style:none}
+.ba-list li{padding:7px 0 7px 24px;position:relative;font-size:14px;color:var(--gray);border-bottom:1px solid var(--light-gray)}
+.ba-list li:last-child{border:none}
+.ba-list li::before{position:absolute;left:0;font-size:16px}
+.ba-card.before .ba-list li::before{content:'✗';color:var(--red)}
+.ba-card.after .ba-list li::before{content:'✓';color:var(--green)}
+.ba-arrow{display:flex;align-items:center;justify-content:center;font-size:32px;color:var(--orange);font-weight:900}
+
+/* ── OFFER STACK ── */
+.offer-section{background:var(--navy-dark);color:var(--white)}
+.offer-section .section-title{color:var(--white)}
+.offer-section .section-sub{color:rgba(255,255,255,.65)}
+.offer-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,153,0,.2);border-radius:12px;padding:24px;margin-bottom:16px;display:flex;gap:20px;align-items:flex-start;transition:border-color .2s}
+.offer-card:hover{border-color:rgba(255,153,0,.5)}
+.offer-icon{width:52px;height:52px;background:rgba(255,153,0,.15);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
+.offer-content h3{font-family:'Montserrat',sans-serif;font-weight:800;font-size:17px;color:var(--white);margin-bottom:6px}
+.offer-content p{font-size:14px;color:rgba(255,255,255,.6);margin-bottom:8px;line-height:1.6}
+.offer-value{display:flex;gap:8px;align-items:center}
+.offer-value .was{font-size:13px;color:rgba(255,255,255,.3);text-decoration:line-through}
+.offer-value .now{font-family:'Montserrat',sans-serif;font-weight:800;font-size:14px;color:var(--orange)}
+
+/* ── VALUE STACK ── */
+.value-stack{background:rgba(255,255,255,.04);border:1px solid rgba(255,153,0,.3);border-radius:16px;padding:32px;margin-top:40px}
+.vs-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.vs-row:last-child{border:none}
+.vs-name{font-size:14px;color:rgba(255,255,255,.8)}
+.vs-val{font-family:'Montserrat',sans-serif;font-weight:700;font-size:14px;color:rgba(255,255,255,.5);text-decoration:line-through}
+.vs-total-row{padding-top:20px;margin-top:8px;border-top:2px solid rgba(255,153,0,.3)}
+.vs-total-label{font-family:'Montserrat',sans-serif;font-weight:900;font-size:18px;color:var(--white)}
+.vs-total-val{font-family:'Montserrat',sans-serif;font-weight:900;font-size:32px;color:var(--orange)}
+.vs-today-row{padding-top:12px}
+.vs-today-label{font-family:'Montserrat',sans-serif;font-weight:900;font-size:16px;color:var(--orange)}
+.vs-today-val{font-family:'Montserrat',sans-serif;font-weight:900;font-size:42px;color:var(--orange)}
+.vs-saving{background:var(--green);color:#fff;font-family:'Montserrat',sans-serif;font-weight:800;font-size:14px;padding:10px 20px;border-radius:8px;text-align:center;margin-top:16px}
+
+/* ── AUTHORITY ── */
+.authority-section{background:var(--off-white)}
+.authority-grid{display:grid;grid-template-columns:240px 1fr;gap:48px;align-items:center;margin-top:40px}
+@media(max-width:700px){.authority-grid{grid-template-columns:1fr}}
+.auth-img{width:100%;max-width:240px;border-radius:16px;border:4px solid var(--orange);box-shadow:0 12px 40px rgba(255,153,0,.2)}
+.auth-quote{font-family:'Montserrat',sans-serif;font-size:clamp(18px,3vw,26px);font-weight:700;line-height:1.4;color:var(--navy-dark);font-style:italic;margin-bottom:20px;position:relative}
+.auth-quote::before{content:'"';font-size:80px;color:rgba(255,153,0,.15);position:absolute;top:-20px;left:-16px;font-family:Georgia,serif;line-height:1}
+.auth-stats{display:flex;flex-wrap:wrap;gap:20px;margin-top:24px}
+.auth-stat{text-align:center;background:var(--white);border-radius:10px;padding:16px 20px;border:1px solid var(--border);flex:1;min-width:120px}
+.auth-stat .num{font-family:'Montserrat',sans-serif;font-weight:900;font-size:28px;color:var(--orange)}
+.auth-stat .lbl{font-size:11px;color:var(--gray);text-transform:uppercase;letter-spacing:1px;margin-top:2px}
+
+/* ── TESTIMONIALS ── */
+.testi-section{background:var(--white)}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:40px}
+.testi-card{background:var(--off-white);border-radius:12px;padding:24px;border:1px solid var(--border);position:relative}
+.testi-stars{color:var(--orange);font-size:16px;margin-bottom:10px}
+.testi-card p{font-size:14px;color:#374151;font-style:italic;line-height:1.7;margin-bottom:14px}
+.testi-name{font-family:'Montserrat',sans-serif;font-weight:800;font-size:13px;color:var(--navy-dark)}
+.testi-sub{font-size:11px;color:var(--gray);margin-top:2px}
+.testi-video-placeholder{background:var(--navy);border-radius:8px;height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:rgba(255,255,255,.5);font-size:13px;text-align:center;gap:8px;margin-bottom:12px;border:2px dashed rgba(255,153,0,.3)}
+.testi-video-placeholder .play{font-size:32px;color:var(--orange)}
+
+/* ── OBJECTIONS ── */
+.obj-section{background:var(--light-gray)}
+.obj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:40px}
+.obj-card{background:var(--white);border-radius:12px;padding:24px;border:1px solid var(--border);border-top:3px solid var(--orange)}
+.obj-q{font-family:'Montserrat',sans-serif;font-weight:800;font-size:15px;color:var(--navy-dark);margin-bottom:10px}
+.obj-a{font-size:14px;color:var(--gray);line-height:1.7}
+.obj-a strong{color:var(--navy-dark)}
+
+/* ── GUARANTEE ── */
+.guarantee-section{background:var(--green-bg);border-top:4px solid var(--green);border-bottom:4px solid var(--green);padding:60px 20px}
+.guarantee-inner{max-width:720px;margin:0 auto;display:grid;grid-template-columns:160px 1fr;gap:36px;align-items:center}
+@media(max-width:600px){.guarantee-inner{grid-template-columns:1fr;text-align:center}}
+.guarantee-badge{width:140px;height:140px;border-radius:50%;background:var(--green);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;border:6px solid #14532d;box-shadow:0 0 0 4px rgba(22,163,74,.2);font-family:'Montserrat',sans-serif;font-weight:900;text-align:center;line-height:1.2;margin:0 auto}
+.guarantee-badge .big{font-size:24px}
+.guarantee-badge .med{font-size:12px;text-transform:uppercase;letter-spacing:1px}
+.guarantee-content h3{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(18px,3vw,28px);color:#14532d;margin-bottom:12px;text-transform:uppercase}
+.guarantee-content p{font-size:15px;color:#166534;line-height:1.7}
+
+/* ── CHECKOUT ── */
+.checkout-section{background:var(--navy-dark);padding:60px 20px}
+.checkout-box{max-width:700px;margin:0 auto;background:var(--white);border-radius:16px;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.4)}
+.checkout-header{background:linear-gradient(135deg,var(--orange),var(--orange-dark));padding:28px 32px;text-align:center}
+.checkout-header h2{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(18px,3vw,26px);color:var(--navy-dark);text-transform:uppercase}
+.checkout-header .price-display{margin-top:8px;font-family:'Montserrat',sans-serif;font-weight:900}
+.checkout-header .was2{font-size:16px;text-decoration:line-through;color:rgba(35,47,62,.45);margin-right:8px}
+.checkout-header .now2{font-size:36px;color:var(--navy-dark)}
+.checkout-body{padding:32px}
+.checkout-placeholder{background:var(--light-gray);border-radius:10px;padding:32px;text-align:center;border:2px dashed var(--border);margin-bottom:24px}
+.checkout-placeholder p{font-size:14px;color:var(--gray);line-height:1.7}
+.checkout-placeholder strong{font-family:'Montserrat',sans-serif;font-size:16px;color:var(--navy-dark);display:block;margin-bottom:8px}
+.checkout-summary{background:var(--off-white);border-radius:10px;padding:20px;margin-bottom:24px;border:1px solid var(--border)}
+.cs-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);font-size:14px}
+.cs-row:last-child{border:none;font-weight:700;font-size:16px;color:var(--navy-dark)}
+.cs-row .cs-val{font-family:'Montserrat',sans-serif;font-weight:700;color:var(--orange)}
+.payment-icons{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:center;margin-top:16px}
+.payment-icon{background:var(--light-gray);border:1px solid var(--border);border-radius:6px;padding:6px 12px;font-size:12px;font-weight:700;color:var(--navy)}
+.secure-note{text-align:center;font-size:12px;color:var(--gray);margin-top:12px;display:flex;align-items:center;justify-content:center;gap:6px}
+
+/* ── FAQ ── */
+.faq-section{background:var(--off-white)}
+.faq-list{max-width:760px;margin:40px auto 0}
+.faq-item{background:var(--white);border-radius:10px;margin-bottom:10px;border:1px solid var(--border);overflow:hidden}
+.faq-q{width:100%;background:none;border:none;padding:18px 20px;text-align:left;font-family:'Montserrat',sans-serif;font-weight:700;font-size:15px;color:var(--navy-dark);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.faq-q:hover{background:var(--light-gray)}
+.faq-q .icon{color:var(--orange);font-size:18px;flex-shrink:0;transition:transform .25s}
+.faq-q.open .icon{transform:rotate(45deg)}
+.faq-a{display:none;padding:0 20px 18px;font-size:14px;color:var(--gray);line-height:1.7}
+.faq-a.open{display:block}
+
+/* ── SCARCITY BAR ── */
+.scarcity-bar{background:var(--red);color:#fff;text-align:center;padding:16px 20px}
+.scarcity-bar p{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(13px,2vw,16px);letter-spacing:.3px}
+.scarcity-bar span{color:var(--gold)}
+
+/* ── FINAL CTA SECTION ── */
+.final-cta{background:linear-gradient(160deg,var(--navy-dark),#0d1b2a);padding:70px 20px;text-align:center;color:var(--white)}
+.final-cta h2{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(22px,4.5vw,44px);text-transform:uppercase;margin-bottom:12px;line-height:1.15}
+.final-cta h2 span{color:var(--orange)}
+.final-cta p{color:rgba(255,255,255,.65);max-width:600px;margin:0 auto 36px;font-size:16px}
+
+/* ── EXIT POPUP ── */
+.popup-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:10000;padding:20px;overflow-y:auto;align-items:flex-start;justify-content:center;backdrop-filter:blur(4px)}
+.popup-overlay.active{display:flex}
+.popup-box{background:var(--white);border-radius:16px;max-width:680px;width:100%;margin:30px auto;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.6);position:relative}
+.popup-close{position:absolute;top:14px;right:16px;width:32px;height:32px;border-radius:50%;background:rgba(35,47,62,.6);color:#fff;border:none;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:1;transition:background .15s}
+.popup-close:hover{background:var(--red)}
+.popup-header{background:linear-gradient(135deg,var(--navy-dark),var(--navy));color:var(--white);padding:32px 48px 24px;text-align:center}
+.popup-emoji{font-size:36px;margin-bottom:10px}
+.popup-header h2{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(18px,3vw,26px);text-transform:uppercase;line-height:1.25;margin-bottom:8px}
+.popup-header h2 span{color:var(--orange)}
+.popup-header p{color:rgba(255,255,255,.65);font-size:14px}
+.popup-body{padding:0;background:#f9fafb}
+
+/* ── DISCLAIMER ── */
+.disclaimer{background:#f3f4f6;padding:40px 20px;border-top:1px solid var(--border)}
+.disclaimer-inner{max-width:860px;margin:0 auto;font-size:11px;color:#9ca3af;line-height:1.8;text-align:center}
+.disclaimer-inner p+p{margin-top:10px}
+
+/* ── FOOTER ── */
+footer{background:var(--navy-dark);color:#374151;text-align:center;padding:20px;font-size:12px}
+footer a{color:#6b7280;text-decoration:none}
+footer a:hover{color:var(--orange)}
+
+/* ── UTILS ── */
+.orange{color:var(--orange)}
+.green{color:var(--green)}
+hr.divider{border:none;border-top:1px solid var(--border);margin:32px 0}
+.checklist{list-style:none}
+.checklist li{padding:9px 0 9px 32px;position:relative;font-size:15px;border-bottom:1px solid var(--light-gray)}
+.checklist li:last-child{border:none}
+.checklist li::before{content:'✓';position:absolute;left:0;color:var(--green);font-weight:900;font-size:17px}
+.flag{font-size:20px}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="ann-bar">
+  🇺🇸 <span>JULY 4TH INDEPENDENCE DAY SPECIAL</span> — Price Returns to $2,497 When Timer Hits Zero. <span>NO EXTENSIONS. NO EXCEPTIONS.</span> 🇺🇸
+</div>
+
+<!-- STICKY MOBILE CTA -->
+<div class="sticky-mob">
+  <a href="#checkout" onclick="return scrollToCheckout()">🔥 CLAIM MY $297 INDEPENDENCE DAY PRICE →</a>
+</div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- HERO -->
+<!-- ══════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="july4-badge">🇺🇸 July 4th Independence Day Special 🇺🇸</div>
+    <h1>
+      Stop Trading Hours for Dollars.<br>
+      <span class="orange">Own an Amazon + Walmart + TikTok</span><br>
+      Business That Runs Without You.
+    </h1>
+    <p class="hero-sub">
+      You already know the system works. You've seen the webinars, the wins, the framework. <strong>Today you get all-in access at the lowest price we will ever offer</strong> — but only for the next 48 hours.
+    </p>
+
+    <!-- COUNTDOWN -->
+    <div class="countdown-wrap">
+      <div class="countdown-label">⚠️ This Price Disappears In:</div>
+      <div class="countdown-digits">
+        <div class="cd-block"><div class="cd-num" id="cd-h">47</div><div class="cd-unit">Hours</div></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-block"><div class="cd-num" id="cd-m">59</div><div class="cd-unit">Mins</div></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-block"><div class="cd-num" id="cd-s">59</div><div class="cd-unit">Secs</div></div>
+      </div>
+    </div>
+    <p class="hero-urgency">Timer is live. Price resets to $2,497 automatically at expiry.</p>
+
+    <!-- PRICE DISPLAY -->
+    <div class="price-hero">
+      <div class="price-was">
+        <div class="label">Original Price</div>
+        <div class="amount">$2,497</div>
+      </div>
+      <div class="price-arrow">→</div>
+      <div class="price-now">
+        <div class="label">Your July 4th Price</div>
+        <div class="amount">$297</div>
+        <div class="sub">One-Time Payment · Full Lifetime Access</div>
+      </div>
+    </div>
+    <div class="savings-pill">🎉 You Save $2,200 Today Only</div>
+
+    <!-- PRIMARY CTA -->
+    <div style="margin-top:32px;text-align:center">
+      <a href="#checkout" class="cta-btn" onclick="return scrollToCheckout()">
+        🔥 YES — LOCK IN MY $297 ACCESS NOW →
+      </a>
+      <p class="cta-sub">🔒 <span>Secure 256-bit SSL Checkout</span> &nbsp;|&nbsp; Visa · MC · Amex · PayPal Accepted</p>
+    </div>
+
+    <!-- TRUST ROW -->
+    <div class="trust-row">
+      <div class="trust-item"><span class="icon">🔒</span>Secure Checkout</div>
+      <div class="trust-item"><span class="icon">💳</span>All Cards Accepted</div>
+      <div class="trust-item"><span class="icon">✅</span>Instant Access</div>
+      <div class="trust-item"><span class="icon">🛡️</span>Satisfaction Guarantee</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ -->
+<!-- SOCIAL PROOF BAR -->
+<!-- ══════════════════════════════════════ -->
+<div class="proof-bar">
+  <div class="proof-bar-inner">
+    <div class="proof-stat"><div class="num">4,750+</div><div class="lbl">Students Enrolled</div></div>
+    <div class="proof-divider"></div>
+    <div class="proof-stat"><div class="num">$10K</div><div class="lbl">Event Value — Yours Today</div></div>
+    <div class="proof-divider"></div>
+    <div class="proof-stat"><div class="num">15 Yrs</div><div class="lbl">Marketplace Experience</div></div>
+    <div class="proof-divider"></div>
+    <div class="proof-stat"><div class="num">3</div><div class="lbl">Platforms: AMZ+WAL+TikTok</div></div>
+    <div class="proof-divider"></div>
+    <div class="proof-stat"><div class="num">30 Days</div><div class="lbl">To First Sales (Avg)</div></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- VIDEO SECTION -->
+<!-- ══════════════════════════════════════ -->
+<section class="video-section">
+  <div style="max-width:900px;margin:0 auto;text-align:center;margin-bottom:32px">
+    <span class="section-label" style="border-color:rgba(255,153,0,.4);color:var(--orange)">Watch This Before You Decide</span>
+    <h2 style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(20px,3.5vw,34px);color:#fff;text-transform:uppercase;margin-bottom:10px">See The System That's Changed<br><span style="color:var(--orange)">Thousands of Lives</span></h2>
+    <p style="color:rgba(255,255,255,.55);font-size:15px">Luqman walks you through exactly how the framework works and why July 4th is the single best moment to get in.</p>
+  </div>
+  <div class="video-wrap">
+    <!-- EMBED YOUR VSL HERE — Recommended: YouTube unlisted or Vimeo -->
+    <iframe src="https://www.youtube-nocookie.com/embed/4wL4NXX_RbM?autoplay=1&mute=1&modestbranding=1&rel=0&controls=1" frameborder="0" allow="autoplay;encrypted-media" allowfullscreen></iframe>
+  </div>
+  <p class="video-caption">🔊 Turn sound on — Luqman reveals the full framework and today's July 4th offer.</p>
+  <div style="text-align:center;margin-top:32px">
+    <a href="#checkout" class="cta-btn" onclick="return scrollToCheckout()">I'M READY — GIVE ME ACCESS NOW →</a>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ -->
+<!-- TRANSFORMATION -->
+<!-- ══════════════════════════════════════ -->
+<section class="section transform-section">
+  <div class="section-inner text-center">
+    <span class="section-label">The Transformation</span>
+    <h2 class="section-title">You're One Decision Away From<br><span class="orange">A Completely Different Life</span></h2>
+    <p class="section-sub">Most people stay stuck not because they lack talent — but because they never get the right system.</p>
+  </div>
+  <div class="section-inner">
+    <div class="before-after">
+      <div class="ba-card before">
+        <span class="ba-tag before-tag">Where You Are Now</span>
+        <h3>The Old Way (Painful)</h3>
+        <ul class="ba-list">
+          <li>Trading 40+ hours per week for someone else's dream</li>
+          <li>Importing from China with massive upfront risk</li>
+          <li>Burning money on Private Label products that flop</li>
+          <li>Running ads you don't understand, wasting thousands</li>
+          <li>Zero leverage — if you stop, income stops</li>
+          <li>Watching others win while staying stuck on the sidelines</li>
+          <li>Earning the same amount regardless of how hard you work</li>
+        </ul>
+      </div>
+      <div class="ba-arrow">→</div>
+      <div class="ba-card after">
+        <span class="ba-tag after-tag">Where You're Going</span>
+        <h3>The C2C Way (Freedom)</h3>
+        <ul class="ba-list">
+          <li>Selling name-brand products people already buy daily</li>
+          <li>Zero inventory from China — no shipping, no guesswork</li>
+          <li>Amazon + Walmart + TikTok all working simultaneously</li>
+          <li>Systems and people doing the work while you scale</li>
+          <li>Income that grows whether you're working or not</li>
+          <li>Results in as little as 30 days from starting</li>
+          <li>A business that compounds every single season</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ -->
+<!-- AUTHORITY / COACH -->
+<!-- ══════════════════════════════════════ -->
+<section class="section authority-section">
+  <div class="section-inner">
+    <div class="authority-grid">
+      <div>
+        <!-- Replace src with Luqman's actual headshot -->
+        <img class="auth-img" src="https://statics.myclickfunnels.com/image/1805945/file/7b6f0f8fc9dee4e067713ecd9520bbe0.png" alt="Luqman - C2C Framework Founder">
+        <div style="text-align:center;margin-top:14px">
+          <div style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:18px;color:var(--navy-dark)">Luqman</div>
+          <div style="font-size:12px;color:var(--gray);text-transform:uppercase;letter-spacing:1px">Multi-7-Figure Amazon + Walmart Seller</div>
+          <div style="font-size:12px;color:var(--gray)">Houston, Texas, USA</div>
+        </div>
+      </div>
+      <div>
+        <span class="section-label">Meet Your Mentor</span>
+        <h2 class="section-title" style="text-align:left">"I Faced the Struggles<br><span class="orange">So You Don't Have To."</span></h2>
+        <div class="auth-quote">
+          I didn't find a guru. I found a framework. Then I became the person who teaches it to thousands.
+        </div>
+        <p style="color:var(--gray);font-size:15px;line-height:1.8;margin-bottom:16px">
+          Fifteen years ago, Luqman was exactly where you are — grinding, hoping, and losing money on strategies that never worked. He tried Private Label, burned capital, failed, and almost quit. Then he stumbled into an elite Mastermind where the real Amazon sellers shared what was actually working: <strong>wholesale, brand certification, and the FBA + FBM combination</strong>.
+        </p>
+        <p style="color:var(--gray);font-size:15px;line-height:1.8;margin-bottom:24px">
+          Today, he runs multiple 7-figure e-commerce operations across Amazon, Walmart, and TikTok — and has guided over 4,750 students through the same exact process. He's one of the <strong>only coaches who actively sells the same system he teaches</strong>.
+        </p>
+        <div class="auth-stats">
+          <div class="auth-stat"><div class="num">15+</div><div class="lbl">Years Selling</div></div>
+          <div class="auth-stat"><div class="num">7-Fig</div><div class="lbl">Annual Revenue</div></div>
+          <div class="auth-stat"><div class="num">4,750+</div><div class="lbl">Students</div></div>
+          <div class="auth-stat"><div class="num">3</div><div class="lbl">Platforms</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ -->
+<!-- OFFER STACK / WHAT'S INCLUDED -->
+<!-- ══════════════════════════════════════ -->
+<section class="section offer-section">
+  <div class="section-inner text-center">
+    <span class="section-label" style="border-color:rgba(255,153,0,.4)">Everything You Get Today</span>
+    <h2 class="section-title" style="color:var(--white)">Here's Exactly What's Inside<br><span style="color:var(--orange)">Your $297 July 4th Package</span></h2>
+    <p class="section-sub">Every module. Every resource. Every bonus. Everything needed to go from zero to your first sales in 30 days.</p>
+  </div>
+  <div class="section-inner">
+
+    <div class="offer-card">
+      <div class="offer-icon">📦</div>
+      <div class="offer-content">
+        <h3>Module 1 — Business Setup Mastery</h3>
+        <p>The exact legal, financial, and operational foundation to set up your Amazon and Walmart seller accounts for maximum profit from day one. No guessing, no costly mistakes.</p>
+        <div class="offer-value"><span class="was">$497</span><span class="now">✓ INCLUDED</span></div>
+      </div>
+    </div>
+
+    <div class="offer-card">
+      <div class="offer-icon">🏆</div>
+      <div class="offer-content">
+        <h3>Module 2 — Brand Certification Blueprint</h3>
+        <p>Get ungated and officially approved by profitable name-brand manufacturers and wholesalers. This is the exact process that separates 6-figure sellers from beginners who spin their wheels.</p>
+        <div class="offer-value"><span class="was">$697</span><span class="now">✓ INCLUDED</span></div>
+      </div>
+    </div>
+
+    <div class="offer-card">
+      <div class="offer-icon">🎯</div>
+      <div class="offer-content">
+        <h3>Module 3 — Winning Product Research System</h3>
+        <p>The simple tools Luqman and his team use daily to identify where big brands source their inventory — and how to tap into the same supply chains. Never guess on a product again.</p>
+        <div class="offer-value"><span class="was">$397</span><span class="now">✓ INCLUDED</span></div>
+      </div>
+    </div>
+
+    <div class="offer-card">
+      <div class="offer-icon">🔄</div>
+      <div class="offer-content">
+        <h3>Module 4 — FBA + FBM Combination Framework</h3>
+        <p>The secret combination strategy that maximizes margins across both fulfillment models — simultaneously reducing costs while increasing your buy box percentage and seasonal profits.</p>
+        <div class="offer-value"><span class="was">$497</span><span class="now">✓ INCLUDED</span></div>
+      </div>
+    </div>
+
+    <div class="offer-card">
+      <div class="offer-icon">🛒</div>
+      <div class="offer-content">
+        <h3>Module 5 — Walmart.com Expansion System</h3>
+        <p>Step-by-step Walmart seller account setup and scaling strategy to unlock a second evergreen income stream — with less competition and higher margins than Amazon.</p>
+        <div class="offer-value"><span class="was">$397</span><span class="now">✓ INCLUDED</span></div>
+      </div>
+    </div>
+
+    <div class="offer-card">
+      <div class="offer-icon">📱</div>
+      <div class="offer-content">
+        <h3>Module 6 — TikTok Shop Framework (NEW)</h3>
+        <p>Tap into TikTok's exploding commerce ecosystem and add a third revenue stream. Learn how to list wholesale products, leverage organic TikTok traffic, and convert followers into buyers — no ads needed.</p>
+        <div class="offer-value"><span class="was">$497</span><span class="now">✓ INCLUDED</span></div>
+      </div>
+    </div>
+
+    <div class="offer-card">
+      <div class="offer-icon">🤖</div>
+      <div class="offer-content">
+        <h3>Module 7 — AI Organic Ranking Framework</h3>
+        <p>Use AI tools to optimize your listings, rank organically on Amazon and Walmart search, and dominate your category without spending a single dollar on ads.</p>
+        <div class="offer-value"><span class="was">$297</span><span class="now">✓ INCLUDED</span></div>
+      </div>
+    </div>
+
+    <div class="offer-card">
+      <div class="offer-icon">🚀</div>
+      <div class="offer-content">
+        <h3>Module 8 — Scale, Automate & Delegate</h3>
+        <p>Build the systems and team structure that lets your business run without your daily involvement. This is how Luqman turned one business into multiple 7-figure operations.</p>
+        <div class="offer-value"><span class="was">$497</span><span class="now">✓ INCLUDED</span></div>
+      </div>
+    </div>
+
+    <div class="offer-card" style="border-color:rgba(255,153,0,.5);background:rgba(255,153,0,.06)">
+      <div class="offer-icon">🎬</div>
+      <div class="offer-content">
+        <h3>BONUS — Behind-the-Scenes Conference Recordings ($10,000 Value)</h3>
+        <p>Exclusive video interviews and sessions recorded at Luqman's private Orlando, USA conference. Attendees paid $10,000 per ticket. These recordings are included free inside your membership today.</p>
+        <div class="offer-value"><span class="was">$10,000</span><span class="now">✓ FREE BONUS</span></div>
+      </div>
+    </div>
+
+    <div class="offer-card" style="border-color:rgba(255,153,0,.5);background:rgba(255,153,0,.06)">
+      <div class="offer-icon">👥</div>
+      <div class="offer-content">
+        <h3>BONUS — Private Mastermind Community Access</h3>
+        <p>Join a community of active Amazon, Walmart, and TikTok sellers. Get accountability, peer support, real-time answers, and access to Luqman and the team directly.</p>
+        <div class="offer-value"><span class="was">$997/yr</span><span class="now">✓ FREE BONUS</span></div>
+      </div>
+    </div>
+
+    <div class="offer-card" style="border-color:rgba(255,153,0,.5);background:rgba(255,153,0,.06)">
+      <div class="offer-icon">📞</div>
+      <div class="offer-content">
+        <h3>BONUS — Group Onboarding Call with Luqman</h3>
+        <p>Get direct access to Luqman on a live group call where you'll map out your first 30 days, get your specific questions answered, and leave with a clear execution roadmap.</p>
+        <div class="offer-value"><span class="was">$497</span><span class="now">✓ FREE BONUS</span></div>
+      </div>
+    </div>
+
+    <!-- VALUE STACK -->
+    <div class="value-stack">
+      <h3 style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:20px;color:var(--white);margin-bottom:20px;text-align:center;text-transform:uppercase">📊 Total Value Breakdown</h3>
+      <div class="vs-row"><span class="vs-name">8-Module C2C Framework (Amazon + Walmart + TikTok)</span><span class="vs-val">$3,276</span></div>
+      <div class="vs-row"><span class="vs-name">AI Organic Ranking Framework</span><span class="vs-val">$297</span></div>
+      <div class="vs-row"><span class="vs-name">Behind-the-Scenes Conference Recordings</span><span class="vs-val">$10,000</span></div>
+      <div class="vs-row"><span class="vs-name">Private Mastermind Community (1 Year)</span><span class="vs-val">$997</span></div>
+      <div class="vs-row"><span class="vs-name">Group Onboarding Call with Luqman</span><span class="vs-val">$497</span></div>
+      <div class="vs-row vs-total-row"><span class="vs-total-label">Total Real-World Value</span><span class="vs-total-val">$15,067</span></div>
+      <div class="vs-row vs-today-row"><span class="vs-today-label">🇺🇸 Your July 4th Price (48 hrs only)</span><span class="vs-today-val">$297</span></div>
+      <div class="vs-saving">You save $14,770 — but ONLY if you act before the timer expires.</div>
+    </div>
+
+    <div style="text-align:center;margin-top:40px">
+      <a href="#checkout" class="cta-btn" onclick="return scrollToCheckout()" style="background:linear-gradient(135deg,#FF9900,#FFB347,#FF9900)">
+        🔥 CLAIM MY JULY 4TH ACCESS FOR $297 →
+      </a>
+      <p style="color:rgba(255,255,255,.4);font-size:12px;margin-top:10px">Price returns to $2,497 when the timer hits zero. No exceptions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ -->
+<!-- TESTIMONIALS -->
+<!-- ══════════════════════════════════════ -->
+<section class="section testi-section">
+  <div class="section-inner text-center">
+    <span class="section-label">Student Proof</span>
+    <h2 class="section-title">Real People. Real Results.<br><span class="orange">Real Amazon + Walmart Income.</span></h2>
+    <p class="section-sub">These aren't hand-picked exceptions — this is what consistently happens when ordinary people follow an extraordinary system.</p>
+  </div>
+  <div class="section-inner-wide">
+    <div class="testi-grid">
+
+      <div class="testi-card">
+        <div class="testi-video-placeholder">
+          <div class="play">▶</div>
+          <p>[ Waheed's Video Testimonial ]<br>Embed Here</p>
+        </div>
+        <div class="testi-stars">★★★★★</div>
+        <p>"I can't believe the transformation. This framework is pure genius. I went from having zero Amazon knowledge to making consistent sales within weeks."</p>
+        <div class="testi-name">Waheed</div>
+        <div class="testi-sub">Verified C2C Framework Student</div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-video-placeholder">
+          <div class="play">▶</div>
+          <p>[ Josephine's Video Testimonial ]<br>Embed Here</p>
+        </div>
+        <div class="testi-stars">★★★★★</div>
+        <p>"I had no idea a process this effective existed. I didn't need ads, I didn't need to import anything. I just followed the framework and the sales came."</p>
+        <div class="testi-name">Josephine</div>
+        <div class="testi-sub">Verified C2C Framework Student</div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-video-placeholder">
+          <div class="play">▶</div>
+          <p>[ Kenny's Video Testimonial ]<br>Embed Here</p>
+        </div>
+        <div class="testi-stars">★★★★★</div>
+        <p>"I went from zero to making real money in no time. I was completely new and the framework held my hand through every step. It just works."</p>
+        <div class="testi-name">Kenny</div>
+        <div class="testi-sub">Verified C2C Framework Student</div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>"I was stuck in a dead-end job with no way out. After joining the Mastermind, I replaced my full income. The freedom I have now is something I never thought possible."</p>
+        <div class="testi-name">Akorede</div>
+        <div class="testi-sub">Verified C2C Framework Student</div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>"I sold 30 units during training. DURING training. I didn't even finish the modules before making my first money. This framework delivers faster than anything I've seen."</p>
+        <div class="testi-name">Framework Member</div>
+        <div class="testi-sub">Verified C2C Framework Student</div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>"My daily earnings didn't just grow — they skyrocketed. Luqman's exact strategy shifted everything. I went from steady progress to an incredible leap almost overnight."</p>
+        <div class="testi-name">Framework Member</div>
+        <div class="testi-sub">Verified C2C Framework Student</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ -->
+<!-- OBJECTION HANDLING -->
+<!-- ══════════════════════════════════════ -->
+<section class="section obj-section">
+  <div class="section-inner text-center">
+    <span class="section-label">Objection Crusher</span>
+    <h2 class="section-title">Every Reason You've Told Yourself<br><span class="orange">"Not Yet" — Answered.</span></h2>
+    <p class="section-sub">You've been on this list long enough to know the framework works. Here's why today is the right time to act.</p>
+  </div>
+  <div class="section-inner">
+    <div class="obj-grid">
+
+      <div class="obj-card">
+        <div class="obj-q">😰 "I have no experience with Amazon or e-commerce."</div>
+        <div class="obj-a">The C2C Framework was built specifically for beginners. Of Luqman's 4,750+ students, the majority started with zero experience. The 9-step process is designed to work even if you've never shipped a product in your life. <strong>Lack of experience is not a barrier — it's actually an advantage</strong> because you have no bad habits to unlearn.</div>
+      </div>
+
+      <div class="obj-card">
+        <div class="obj-q">💸 "I don't have thousands to spend on inventory."</div>
+        <div class="obj-a">That's the beauty of the wholesale framework. You don't front massive capital. You build a catalog of approved brands, make your first shipment strategically, and reinvest profits. <strong>Students have started with under $1,000</strong> and built from there. This is not Private Label — there's no $10K minimum.</div>
+      </div>
+
+      <div class="obj-card">
+        <div class="obj-q">⏰ "I don't have time — I'm working full time."</div>
+        <div class="obj-a">Most of Luqman's students built their Amazon business while still employed. The framework is designed for <strong>evenings and weekends</strong>. Once the systems are set up, Module 8 shows you how to delegate so the business runs without your constant input. Start part-time. Scale to full-time.</div>
+      </div>
+
+      <div class="obj-card">
+        <div class="obj-q">📉 "Isn't Amazon too saturated now?"</div>
+        <div class="obj-a">Amazon processes over $1.4 trillion in gross merchandise value annually — and it grows every year. The C2C framework doesn't compete for generic product listings. <strong>You sell certified name-brand products</strong> with built-in customer demand and brand loyalty. Saturation is a Private Label problem, not a wholesale problem.</div>
+      </div>
+
+      <div class="obj-card">
+        <div class="obj-q">🛒 "What's the advantage of Walmart over Amazon?"</div>
+        <div class="obj-a">Walmart has <strong>far less seller competition</strong> than Amazon, lower fees in many categories, and 120+ million unique monthly visitors. Many students find Walmart outperforms Amazon within their first 90 days. Adding Walmart means doubling your distribution with the same products and no additional sourcing.</div>
+      </div>
+
+      <div class="obj-card">
+        <div class="obj-q">📱 "How does TikTok Shop fit into this?"</div>
+        <div class="obj-a">TikTok Shop is the fastest-growing e-commerce platform in the world right now. The same wholesale products you sell on Amazon and Walmart can be listed on TikTok Shop with <strong>zero additional sourcing effort</strong>. You're adding a third revenue stream to an existing system. Module 6 shows you exactly how.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ -->
+<!-- SCARCITY BAR -->
+<!-- ══════════════════════════════════════ -->
+<div class="scarcity-bar">
+  <p>⚠️ <span>WARNING:</span> This $297 July 4th price is a 48-hour event. When the countdown hits zero, the price automatically returns to <span>$2,497</span>. There will be no replay, no discount code, and no extensions. This message will not appear again.</p>
+</div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- GUARANTEE -->
+<!-- ══════════════════════════════════════ -->
+<section class="guarantee-section">
+  <div class="guarantee-inner">
+    <div class="guarantee-badge">
+      <div class="big">100%</div>
+      <div class="med">Satisfaction</div>
+      <div class="med">Guaranteed</div>
+    </div>
+    <div class="guarantee-content">
+      <h3>The "Freedom or Full Refund" Guarantee</h3>
+      <p>Join the C2C Framework Mastermind and execute every step of the system alongside Luqman and the team. If you do the work and don't find extraordinary value in the framework, reach out within the guarantee window and you'll receive a full refund — no awkward conversations, no hoops. The risk is 100% ours. Your only job is to show up and implement.</p>
+      <p style="margin-top:12px;font-weight:700;color:#14532d">⚠️ Please confirm your specific guarantee terms during checkout or in your welcome email.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ -->
+<!-- CHECKOUT -->
+<!-- ══════════════════════════════════════ -->
+<section class="checkout-section" id="checkout">
+  <div style="text-align:center;margin-bottom:32px">
+    <span class="section-label" style="border-color:rgba(255,153,0,.4)">Secure Order Form</span>
+    <h2 style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(20px,3.5vw,36px);color:#fff;text-transform:uppercase;margin-bottom:8px">Complete Your Order Below</h2>
+    <p style="color:rgba(255,255,255,.5);font-size:14px">You're one step away from Amazon + Walmart + TikTok freedom.</p>
+    <!-- Mini countdown repeat -->
+    <div style="margin-top:16px;display:inline-flex;align-items:center;gap:12px;background:rgba(220,38,38,.15);border:1px solid rgba(220,38,38,.4);border-radius:8px;padding:10px 20px">
+      <span style="font-size:18px">⏰</span>
+      <span style="color:#fff;font-family:'Montserrat',sans-serif;font-weight:700;font-size:14px">Price locks in <span id="mini-cd" style="color:var(--orange)">47:59:59</span> — then rises to $2,497</span>
+    </div>
+  </div>
+
+  <div class="checkout-box">
+    <div class="checkout-header">
+      <h2>🇺🇸 July 4th Independence Day — Special Access</h2>
+      <div class="price-display">
+        <span class="was2">$2,497</span>
+        <span class="now2">$297</span>
+        <span style="font-size:14px;color:rgba(35,47,62,.6)"> one-time</span>
+      </div>
+    </div>
+    <div class="checkout-body">
+      <!-- ORDER SUMMARY -->
+      <div class="checkout-summary">
+        <div class="cs-row"><span>Amazon + Walmart + TikTok Framework (8 Modules)</span><span class="cs-val">Included</span></div>
+        <div class="cs-row"><span>AI Organic Ranking Framework</span><span class="cs-val">Included</span></div>
+        <div class="cs-row"><span>Conference Recordings ($10K Value)</span><span class="cs-val">FREE</span></div>
+        <div class="cs-row"><span>Private Mastermind Community</span><span class="cs-val">FREE</span></div>
+        <div class="cs-row"><span>Group Onboarding Call</span><span class="cs-val">FREE</span></div>
+        <div class="cs-row"><span>Regular Price</span><span style="text-decoration:line-through;color:var(--gray)">$2,497</span></div>
+        <div class="cs-row"><span>🇺🇸 July 4th Discount</span><span style="color:var(--green);font-weight:700">-$2,200</span></div>
+        <div class="cs-row"><span>Today's Total</span><span class="cs-val" style="font-size:20px">$297</span></div>
+      </div>
+
+      <!-- EMBED CHECKOUT FORM HERE -->
+      <div class="checkout-placeholder">
+        <strong>[ EMBED YOUR CLICKFUNNELS / STRIPE CHECKOUT FORM HERE ]</strong>
+        <p>Replace this block with your ClickFunnels order form element, Stripe payment link, or any checkout embed. The order summary above will remain visible above the form at all times.</p>
+      </div>
+
+      <!-- PAYMENT ICONS -->
+      <div class="payment-icons">
+        <div class="payment-icon">VISA</div>
+        <div class="payment-icon">Mastercard</div>
+        <div class="payment-icon">AMEX</div>
+        <div class="payment-icon">PayPal</div>
+        <div class="payment-icon">Discover</div>
+      </div>
+      <div class="secure-note">🔒 256-bit SSL Encryption &nbsp;|&nbsp; PCI-Compliant Checkout &nbsp;|&nbsp; Instant Access After Payment</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ -->
+<!-- FAQ -->
+<!-- ══════════════════════════════════════ -->
+<section class="section faq-section">
+  <div class="section-inner text-center">
+    <span class="section-label">FAQ</span>
+    <h2 class="section-title">Your Questions,<br><span class="orange">Answered Directly.</span></h2>
+  </div>
+  <div class="faq-list">
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What exactly is the C2C Amazon + Walmart + TikTok Framework? <span class="icon">+</span></button>
+      <div class="faq-a">It's an 8-module, step-by-step system for building a profitable wholesale selling business across Amazon, Walmart, and TikTok Shop — without Private Label, without shipping from China, and without running ads. You sell established name-brand products that already have proven demand.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Is this really only $297 today? <span class="icon">+</span></button>
+      <div class="faq-a">Yes — but only while the July 4th countdown timer is running. This is a 48-hour Independence Day special. When the timer expires, the price automatically returns to the standard $2,497. There is no replay, no extension, and no discount code available after the timer ends.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">I have zero Amazon experience. Will this work for me? <span class="icon">+</span></button>
+      <div class="faq-a">Absolutely. The majority of Luqman's 4,750+ students started with zero experience. The 9-step framework is designed to be foolproof — you're guided from business setup through to your first sales and delegation. You do not need any prior knowledge of Amazon, Walmart, or TikTok.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How long until I see results? <span class="icon">+</span></button>
+      <div class="faq-a">Students typically make their first sale within 30 days of starting. Some see results faster — several students made sales before finishing the training. Consistent monthly income usually appears within 60-90 days of executing the full framework. Results depend on the effort you put in.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Can I do this from the UK or Canada, not just the USA? <span class="icon">+</span></button>
+      <div class="faq-a">Yes. The C2C Framework is designed for students in the United States, United Kingdom, and Canada. Both Amazon and Walmart allow sellers from these countries to build fully operational, profitable businesses using the same wholesale system taught inside.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Do I need money for inventory upfront? <span class="icon">+</span></button>
+      <div class="faq-a">You will need some capital for your first inventory order, but this framework is designed to minimize upfront risk. Students have successfully started with less than $1,000. You'll learn how to select products strategically so your first purchase is high-confidence, not a gamble.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What makes this different from other Amazon courses? <span class="icon">+</span></button>
+      <div class="faq-a">Three things: (1) Luqman actively sells on Amazon and Walmart himself — he doesn't just teach theory. (2) The framework covers three platforms simultaneously (Amazon, Walmart, TikTok Shop). (3) The wholesale + brand certification approach is far more scalable and lower-risk than Private Label or Retail Arbitrage.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Will I get support after I join? <span class="icon">+</span></button>
+      <div class="faq-a">Yes — this is not a drop-and-forget program. You'll get access to the private Mastermind community, the group onboarding call with Luqman, and ongoing mentorship. Luqman has personally stated: "I have faced the struggles so you don't have to." You will not be left hanging.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What is the guarantee? <span class="icon">+</span></button>
+      <div class="faq-a">There is a satisfaction guarantee on this program. If you execute the framework and don't find immense value, you can request a refund within the guarantee window. Full terms will be confirmed in your checkout and welcome email. The goal is your success — not your money.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How do I get access after I pay? <span class="icon">+</span></button>
+      <div class="faq-a">Immediately. After your payment processes, you'll be redirected to the Thank You page with your access instructions. A confirmation email will also be sent to your inbox within minutes containing everything you need to log in and get started right away.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Can I speak with Luqman directly before buying? <span class="icon">+</span></button>
+      <div class="faq-a">Yes — if you'd prefer to have a private conversation before committing, you can book a call at <a href="https://calendly.com/viraladmediacalendar/one-on-one-call" target="_blank" style="color:var(--orange)">calendly.com/viraladmediacalendar/one-on-one-call</a>. However, be aware that the $297 July 4th price is time-locked and cannot be honored after the timer expires — not even on a call.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">I already watched the webinar. Is there new content here? <span class="icon">+</span></button>
+      <div class="faq-a">Yes. The webinar gave you an overview. The full framework inside the Mastermind goes 10x deeper — with step-by-step module training, tools, templates, the TikTok Shop addition, the AI ranking framework, the Orlando conference recordings, and live group access. What you saw was the preview. This is the full playbook.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ -->
+<!-- FINAL CTA -->
+<!-- ══════════════════════════════════════ -->
+<section class="final-cta">
+  <div style="max-width:760px;margin:0 auto">
+    <div style="font-size:48px;margin-bottom:16px">🇺🇸</div>
+    <h2>This Is Your Independence Day.<br><span>Stop Working For Someone Else's Dream.</span></h2>
+    <p>You've seen the framework. You've read the proof. You know it works. The only question is whether you'll make the decision that your future self will thank you for — or scroll away and watch this offer disappear.</p>
+    <!-- Repeat countdown inline -->
+    <div style="margin-bottom:32px;display:inline-flex;align-items:center;gap:10px;background:rgba(255,153,0,.1);border:1px solid rgba(255,153,0,.3);border-radius:8px;padding:12px 24px">
+      <span style="font-size:20px">⏰</span>
+      <span style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:16px;color:var(--orange)">$297 price expires in: <span id="final-cd">47:59:59</span></span>
+    </div>
+    <br>
+    <a href="#checkout" class="cta-btn" onclick="return scrollToCheckout()">
+      🔥 YES — I WANT FREEDOM. GIVE ME ACCESS FOR $297 →
+    </a>
+    <p style="color:rgba(255,255,255,.35);font-size:12px;margin-top:12px">🔒 Secure checkout · Instant access · Satisfaction guarantee · Price returns to $2,497 after timer</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ -->
+<!-- EXIT INTENT POPUP -->
+<!-- ══════════════════════════════════════ -->
+<div class="popup-overlay" id="exitPopup">
+  <div class="popup-box">
+    <button class="popup-close" onclick="closePopup()" aria-label="Close">✕</button>
+    <div class="popup-header">
+      <div class="popup-emoji">🤝</div>
+      <h2>Wait — Would You Rather Talk to <span>Luqman Directly?</span></h2>
+      <p>Before you leave — book a FREE Discovery Call and get your questions answered personally.</p>
+    </div>
+    <div class="popup-body" style="padding:24px">
+      <div style="text-align:center;margin-bottom:20px">
+        <div style="background:#fff3cd;border:1px solid #ffc107;border-radius:8px;padding:12px 16px;display:inline-block;font-size:13px;color:#856404;font-weight:600">
+          ⚠️ The $297 July 4th price is still active — but expires soon.
+        </div>
+      </div>
+      <!-- Calendly inline widget -->
+      <div class="calendly-inline-widget" data-url="https://calendly.com/viraladmediacalendar/group-call?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=FF9900" style="min-width:280px;height:630px;"></div>
+      <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+      <p style="text-align:center;font-size:12px;color:#9ca3af;margin-top:12px">Or <a href="#checkout" onclick="closePopup();scrollToCheckout()" style="color:var(--orange);font-weight:700">click here to go straight to the $297 checkout →</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- DISCLAIMER -->
+<!-- ══════════════════════════════════════ -->
+<section class="disclaimer">
+  <div class="disclaimer-inner">
+    <p>This site is not affiliated with or endorsed by Facebook™, YouTube™, Amazon™, Walmart™, or TikTok™ in any way.</p>
+    <p>EARNINGS DISCLAIMER: Results mentioned on this page are not typical. Individual results will vary based on effort, experience, market conditions, and other factors beyond our control. There is no guarantee of income. Examples of results shown are not to be interpreted as a promise or guarantee of earnings. This product's potential is entirely dependent on the person using it and their situation. Always conduct your own due diligence before making any business or financial decision.</p>
+    <p>LIABILITY DISCLAIMER: By purchasing and accessing this program, you agree that the company and its representatives are not responsible for the success or failure of your business. All decisions made based on the information provided are your sole responsibility.</p>
+    <p>© 2026 Viral Ad Media, LLC · All Rights Reserved · <a href="#">Privacy Policy</a> · <a href="#">Terms of Service</a> · <a href="#">Earnings Disclaimer</a> · <a href="#">Contact</a></p>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 C2C AMZ Framework · Viral Ad Media, LLC · Houston, Texas, USA · <a href="mailto:viraladmediacontent@gmail.com">viraladmediacontent@gmail.com</a></p>
+</footer>
+
+<!-- ══════════════════════════════════════ -->
+<!-- JAVASCRIPT -->
+<!-- ══════════════════════════════════════ -->
+<script>
+// ── COUNTDOWN TIMER ──
+function getExpiry() {
+  const KEY = 'c2c_july4_expiry';
+  let expiry = localStorage.getItem(KEY);
+  if (!expiry) {
+    expiry = Date.now() + 48 * 60 * 60 * 1000;
+    localStorage.setItem(KEY, expiry);
+  }
+  return parseInt(expiry);
+}
+function formatTime(ms) {
+  if (ms <= 0) return { h:'00', m:'00', s:'00' };
+  const totalSec = Math.floor(ms / 1000);
+  const h = String(Math.floor(totalSec / 3600)).padStart(2,'0');
+  const m = String(Math.floor((totalSec % 3600) / 60)).padStart(2,'0');
+  const s = String(totalSec % 60).padStart(2,'0');
+  return { h, m, s };
+}
+function updateCountdowns() {
+  const remaining = getExpiry() - Date.now();
+  const { h, m, s } = formatTime(remaining);
+  const cdH = document.getElementById('cd-h');
+  const cdM = document.getElementById('cd-m');
+  const cdS = document.getElementById('cd-s');
+  if (cdH) cdH.textContent = h;
+  if (cdM) cdM.textContent = m;
+  if (cdS) cdS.textContent = s;
+  const mini = document.getElementById('mini-cd');
+  const final = document.getElementById('final-cd');
+  const str = `${h}:${m}:${s}`;
+  if (mini) mini.textContent = str;
+  if (final) final.textContent = str;
+  if (remaining <= 0) {
+    document.querySelectorAll('.cta-btn').forEach(b => {
+      b.textContent = '⚠️ OFFER EXPIRED — PRICE IS NOW $2,497';
+      b.style.background = '#6b7280';
+      b.style.animation = 'none';
+    });
+  }
+}
+setInterval(updateCountdowns, 1000);
+updateCountdowns();
+
+// ── FAQ TOGGLE ──
+function toggleFaq(btn) {
+  const answer = btn.nextElementSibling;
+  const isOpen = answer.classList.contains('open');
+  document.querySelectorAll('.faq-a.open').forEach(a => a.classList.remove('open'));
+  document.querySelectorAll('.faq-q.open').forEach(q => q.classList.remove('open'));
+  if (!isOpen) { answer.classList.add('open'); btn.classList.add('open'); }
+}
+
+// ── SMOOTH SCROLL TO CHECKOUT ──
+function scrollToCheckout() {
+  document.getElementById('checkout').scrollIntoView({ behavior: 'smooth' });
+  return false;
+}
+
+// ── EXIT INTENT ──
+let popupShown = false;
+document.addEventListener('mouseout', function(e) {
+  if (popupShown) return;
+  if (!e.relatedTarget && e.clientY <= 0) {
+    popupShown = true;
+    document.getElementById('exitPopup').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+});
+// Mobile: scroll back to top
+let lastY = window.scrollY;
+window.addEventListener('scroll', function() {
+  if (popupShown) return;
+  if (window.scrollY < lastY && window.scrollY < 120 && window.innerWidth < 768) {
+    popupShown = true;
+    document.getElementById('exitPopup').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  lastY = window.scrollY;
+});
+function closePopup() {
+  document.getElementById('exitPopup').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.getElementById('exitPopup').addEventListener('click', function(e) {
+  if (e.target === this) closePopup();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closePopup();
+});
+</script>
+</body>
+</html>
