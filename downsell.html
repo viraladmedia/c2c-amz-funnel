@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wait — One Last Thing Before You Go | C2C Framework</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --orange:#FF9900;
+  --orange-dark:#cc7a00;
+  --navy:#232F3E;
+  --navy-dark:#131A22;
+  --white:#FFFFFF;
+  --off:#F9F8F5;
+  --gray:#6B7280;
+  --light:#F3F4F6;
+  --green:#16a34a;
+  --green-bg:#f0fdf4;
+  --red:#DC2626;
+  --border:#E5E7EB;
+  --gold:#FFD700;
+  --price-blue:#1D4ED8;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Open Sans',sans-serif;background:var(--off);color:var(--navy-dark);font-size:16px;line-height:1.65;overflow-x:hidden}
+
+/* ── STICKY MOBILE CTA ── */
+.sticky-mob{display:none;position:fixed;bottom:0;left:0;right:0;z-index:999;padding:10px 14px;background:var(--navy-dark);border-top:3px solid var(--orange)}
+.sticky-mob a{display:block;background:linear-gradient(135deg,var(--orange),var(--orange-dark));color:var(--navy-dark);text-align:center;padding:13px;border-radius:8px;font-family:'Montserrat',sans-serif;font-weight:900;font-size:15px;text-decoration:none;text-transform:uppercase;letter-spacing:.4px}
+@media(max-width:768px){.sticky-mob{display:block}body{padding-bottom:72px}}
+
+/* ══════════════════════════════════
+   TOP BANNER — WAIT, DON'T LEAVE
+══════════════════════════════════ */
+.wait-banner{
+  background:var(--red);
+  color:#fff;
+  text-align:center;
+  padding:14px 20px;
+  font-family:'Montserrat',sans-serif;
+  font-weight:800;
+  font-size:clamp(13px,2vw,16px);
+  letter-spacing:.3px;
+  position:relative;
+}
+.wait-banner span{color:var(--gold)}
+
+/* ══════════════════════════════════
+   HERO — SHOCK HEADLINE
+══════════════════════════════════ */
+.hero{
+  background:linear-gradient(170deg,var(--navy-dark) 0%,#1a2535 55%,#0d1b2a 100%);
+  color:var(--white);
+  padding:52px 20px 44px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% -10%,rgba(255,153,0,.13) 0%,transparent 60%);
+}
+.hero-inner{max-width:800px;margin:0 auto;position:relative;z-index:1}
+
+.mistake-label{
+  display:inline-block;
+  background:rgba(220,38,38,.18);
+  border:1px solid rgba(220,38,38,.5);
+  color:#fca5a5;
+  font-family:'Montserrat',sans-serif;
+  font-size:11px;font-weight:800;
+  letter-spacing:2.5px;text-transform:uppercase;
+  padding:6px 18px;border-radius:20px;
+  margin-bottom:22px;
+}
+
+.hero h1{
+  font-family:'Montserrat',sans-serif;
+  font-weight:900;
+  font-size:clamp(26px,5vw,52px);
+  line-height:1.12;
+  text-transform:uppercase;
+  letter-spacing:-1px;
+  margin-bottom:18px;
+}
+.hero h1 .cross{
+  text-decoration:line-through;
+  color:rgba(255,255,255,.25);
+  font-size:.6em;
+  display:block;
+  font-weight:700;
+  letter-spacing:0;
+  margin-bottom:6px;
+}
+.hero h1 .reveal{color:var(--orange)}
+
+.hero-sub{
+  font-size:clamp(15px,2.2vw,19px);
+  color:rgba(255,255,255,.75);
+  max-width:640px;
+  margin:0 auto 36px;
+  line-height:1.7;
+}
+.hero-sub strong{color:var(--orange)}
+
+/* ── PRICE SMASH ── */
+.price-smash{
+  display:inline-flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  background:rgba(255,255,255,.04);
+  border:2px solid rgba(255,153,0,.35);
+  border-radius:14px;
+  padding:24px 40px;
+  margin-bottom:32px;
+  backdrop-filter:blur(4px);
+}
+.price-smash .was-row{
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:6px;
+}
+.price-smash .was-label{
+  font-size:12px;color:rgba(255,255,255,.4);
+  text-transform:uppercase;letter-spacing:1.5px;font-weight:700;
+}
+.price-smash .was-amount{
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  font-size:28px;color:rgba(255,255,255,.28);
+  text-decoration:line-through;
+}
+.price-smash .strikerow{
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:10px;
+}
+.price-smash .strike297{
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  font-size:22px;color:rgba(255,153,0,.35);
+  text-decoration:line-through;
+}
+.price-smash .strike-label{
+  font-size:11px;color:rgba(255,255,255,.3);
+  text-transform:uppercase;letter-spacing:1px;
+}
+.price-smash .now-row{
+  display:flex;align-items:baseline;gap:8px;
+}
+.price-smash .now-label{
+  font-size:13px;font-weight:700;color:var(--orange);
+  text-transform:uppercase;letter-spacing:1px;
+}
+.price-smash .now-amount{
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  font-size:clamp(52px,8vw,76px);
+  color:var(--orange);line-height:1;
+}
+.price-smash .saving-pill{
+  margin-top:12px;
+  background:var(--green);color:#fff;
+  font-family:'Montserrat',sans-serif;font-weight:800;font-size:13px;
+  padding:6px 18px;border-radius:20px;
+}
+
+/* ── CTA BUTTON ── */
+.cta-btn{
+  display:inline-block;
+  background:linear-gradient(135deg,#FF9900 0%,#FFB347 50%,#FF9900 100%);
+  background-size:200%;
+  color:var(--navy-dark);
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  font-size:clamp(16px,2.4vw,21px);
+  text-transform:uppercase;letter-spacing:.5px;
+  padding:19px 46px;border-radius:50px;
+  text-decoration:none;border:none;cursor:pointer;
+  box-shadow:0 8px 32px rgba(255,153,0,.45);
+  animation:pulse 2.2s ease-in-out infinite;
+  max-width:520px;width:100%;
+  transition:transform .15s;
+}
+.cta-btn:hover{transform:scale(1.03);animation:none}
+@keyframes pulse{0%,100%{box-shadow:0 8px 32px rgba(255,153,0,.45)}50%{box-shadow:0 12px 44px rgba(255,153,0,.75)}}
+.cta-note{font-size:12px;color:rgba(255,255,255,.38);margin-top:10px;text-align:center}
+.cta-note span{color:var(--green);font-weight:700}
+
+/* ── TRUST ROW ── */
+.trust-row{
+  display:flex;flex-wrap:wrap;gap:14px;
+  align-items:center;justify-content:center;
+  margin-top:22px;
+}
+.trust-item{
+  display:flex;align-items:center;gap:6px;
+  font-size:12px;color:rgba(255,255,255,.45);font-weight:600;
+}
+
+/* ══════════════════════════════════
+   WHY SECTION
+══════════════════════════════════ */
+.why-section{
+  background:var(--white);
+  padding:56px 20px;
+  text-align:center;
+}
+.why-inner{max-width:720px;margin:0 auto}
+.section-eyebrow{
+  display:inline-block;
+  font-family:'Montserrat',sans-serif;font-size:10px;
+  font-weight:800;letter-spacing:3px;text-transform:uppercase;
+  color:var(--orange);border:1px solid rgba(255,153,0,.35);
+  border-radius:20px;padding:5px 14px;margin-bottom:14px;
+}
+.why-title{
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  font-size:clamp(22px,4vw,36px);
+  text-transform:uppercase;line-height:1.15;
+  margin-bottom:16px;
+}
+.why-title span{color:var(--orange)}
+.why-body{
+  font-size:clamp(15px,2vw,17px);
+  color:var(--gray);line-height:1.8;
+  margin-bottom:32px;
+}
+
+/* ── COMPARISON BLOCK ── */
+.compare-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  margin:32px auto;
+  max-width:640px;
+  text-align:left;
+}
+@media(max-width:560px){.compare-grid{grid-template-columns:1fr}}
+.compare-card{
+  border-radius:12px;padding:22px 20px;
+}
+.compare-card.no{
+  background:#fff0f0;border:2px solid #fecaca;
+}
+.compare-card.yes{
+  background:var(--green-bg);border:2px solid #bbf7d0;
+}
+.compare-tag{
+  font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;
+  letter-spacing:2px;text-transform:uppercase;
+  padding:4px 12px;border-radius:12px;display:inline-block;margin-bottom:12px;
+}
+.compare-card.no .compare-tag{background:#fee2e2;color:var(--red)}
+.compare-card.yes .compare-tag{background:#dcfce7;color:var(--green)}
+.compare-list{list-style:none}
+.compare-list li{
+  padding:6px 0 6px 24px;
+  position:relative;font-size:14px;color:#374151;
+  border-bottom:1px solid rgba(0,0,0,.06);
+}
+.compare-list li:last-child{border:none}
+.compare-card.no .compare-list li::before{content:'✗';position:absolute;left:0;color:var(--red);font-weight:900}
+.compare-card.yes .compare-list li::before{content:'✓';position:absolute;left:0;color:var(--green);font-weight:900}
+
+/* ══════════════════════════════════
+   WHAT'S INCLUDED — COMPACT STACK
+══════════════════════════════════ */
+.includes-section{
+  background:var(--navy-dark);
+  padding:56px 20px;
+  color:var(--white);
+}
+.includes-inner{max-width:720px;margin:0 auto;text-align:center}
+.includes-title{
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  font-size:clamp(20px,3.5vw,34px);
+  text-transform:uppercase;color:var(--white);
+  margin-bottom:8px;line-height:1.2;
+}
+.includes-title span{color:var(--orange)}
+.includes-sub{color:rgba(255,255,255,.55);font-size:15px;margin-bottom:32px}
+
+.include-row{
+  display:flex;align-items:center;gap:14px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,153,0,.15);
+  border-left:3px solid var(--orange);
+  border-radius:8px;
+  padding:14px 18px;
+  margin-bottom:10px;
+  text-align:left;
+  transition:border-color .2s;
+}
+.include-row:hover{border-color:rgba(255,153,0,.4)}
+.include-icon{font-size:22px;flex-shrink:0;width:36px;text-align:center}
+.include-text{flex:1}
+.include-text strong{
+  display:block;font-family:'Montserrat',sans-serif;
+  font-size:14px;font-weight:800;color:var(--white);margin-bottom:2px;
+}
+.include-text span{font-size:12px;color:rgba(255,255,255,.45)}
+.include-value{
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  font-size:13px;color:rgba(255,255,255,.3);
+  text-decoration:line-through;flex-shrink:0;
+}
+
+/* ── TOTAL VALUE SUMMARY ── */
+.value-summary{
+  background:rgba(255,153,0,.08);
+  border:1px solid rgba(255,153,0,.3);
+  border-radius:12px;
+  padding:24px;
+  margin-top:24px;
+}
+.value-line{
+  display:flex;justify-content:space-between;
+  align-items:center;padding:8px 0;
+  border-bottom:1px solid rgba(255,255,255,.07);
+  font-size:14px;color:rgba(255,255,255,.65);
+}
+.value-line:last-child{border:none}
+.value-line.total{
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  font-size:16px;color:var(--white);
+  padding-top:16px;margin-top:4px;
+  border-top:1px solid rgba(255,153,0,.3);
+}
+.value-line.today{
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  font-size:22px;color:var(--orange);
+  padding-top:8px;
+}
+.value-line .val{font-weight:700}
+.value-line.total .val{color:rgba(255,255,255,.4);text-decoration:line-through}
+.value-line.today .val{color:var(--orange);font-size:28px}
+
+/* ══════════════════════════════════
+   SOCIAL PROOF — COMPACT
+══════════════════════════════════ */
+.proof-section{background:var(--off);padding:52px 20px}
+.proof-inner{max-width:720px;margin:0 auto;text-align:center}
+.proof-row{
+  display:flex;flex-wrap:wrap;gap:12px;
+  justify-content:center;margin:28px 0;
+}
+.proof-stat{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:10px;padding:16px 20px;text-align:center;
+  min-width:130px;flex:1;
+}
+.proof-stat .num{
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  font-size:clamp(22px,3vw,32px);color:var(--orange);
+}
+.proof-stat .lbl{font-size:11px;color:var(--gray);text-transform:uppercase;letter-spacing:1px;margin-top:3px}
+
+.testi-mini{
+  background:var(--white);border-radius:10px;padding:20px;
+  border:1px solid var(--border);border-left:4px solid var(--orange);
+  text-align:left;margin-bottom:12px;
+}
+.testi-stars{color:var(--orange);font-size:14px;margin-bottom:6px}
+.testi-mini p{font-size:14px;color:#374151;font-style:italic;line-height:1.7;margin-bottom:8px}
+.testi-mini .name{font-family:'Montserrat',sans-serif;font-weight:800;font-size:13px;color:var(--navy-dark)}
+
+/* ══════════════════════════════════
+   GUARANTEE
+══════════════════════════════════ */
+.guarantee-strip{
+  background:var(--green-bg);
+  border-top:3px solid var(--green);border-bottom:3px solid var(--green);
+  padding:36px 20px;
+}
+.guarantee-inner{
+  max-width:620px;margin:0 auto;
+  display:flex;gap:24px;align-items:center;
+}
+@media(max-width:540px){.guarantee-inner{flex-direction:column;text-align:center}}
+.guarantee-badge{
+  width:100px;height:100px;border-radius:50%;
+  background:var(--green);color:#fff;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  border:4px solid #14532d;box-shadow:0 0 0 3px rgba(22,163,74,.2);
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  text-align:center;line-height:1.2;flex-shrink:0;
+}
+.guarantee-badge .big{font-size:18px}
+.guarantee-badge .sm{font-size:9px;text-transform:uppercase;letter-spacing:1px}
+.guarantee-content h3{
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  font-size:clamp(16px,2.5vw,22px);color:#14532d;
+  text-transform:uppercase;margin-bottom:8px;
+}
+.guarantee-content p{font-size:14px;color:#166534;line-height:1.7}
+
+/* ══════════════════════════════════
+   CHECKOUT BOX
+══════════════════════════════════ */
+.checkout-section{background:var(--navy-dark);padding:60px 20px;text-align:center}
+.checkout-box{
+  max-width:620px;margin:0 auto;
+  background:var(--white);border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 24px 80px rgba(0,0,0,.5);
+}
+.checkout-header{
+  background:linear-gradient(135deg,var(--orange),var(--orange-dark));
+  padding:24px 28px;text-align:center;
+}
+.checkout-header h2{
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  font-size:clamp(16px,3vw,22px);color:var(--navy-dark);
+  text-transform:uppercase;margin-bottom:10px;
+}
+.checkout-price{display:flex;align-items:baseline;justify-content:center;gap:10px;flex-wrap:wrap}
+.checkout-price .was{font-size:18px;text-decoration:line-through;color:rgba(35,47,62,.38);font-weight:700}
+.checkout-price .mid{font-size:14px;text-decoration:line-through;color:rgba(35,47,62,.3);font-weight:700}
+.checkout-price .now{
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  font-size:clamp(38px,6vw,52px);color:var(--navy-dark);line-height:1;
+}
+.checkout-price .period{font-size:14px;color:rgba(35,47,62,.5)}
+.checkout-body{padding:28px}
+.order-summary{background:var(--off);border-radius:10px;padding:16px;margin-bottom:20px;border:1px solid var(--border)}
+.os-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--gray)}
+.os-row:last-child{border:none;font-weight:700;font-size:15px;color:var(--navy-dark)}
+.os-row .os-val{font-family:'Montserrat',sans-serif;font-weight:700;color:var(--orange)}
+.checkout-placeholder{
+  background:var(--light);border:2px dashed var(--border);
+  border-radius:10px;padding:24px;margin-bottom:20px;
+  text-align:center;font-size:13px;color:var(--gray);
+}
+.checkout-placeholder strong{
+  font-family:'Montserrat',sans-serif;font-size:14px;
+  color:var(--navy-dark);display:block;margin-bottom:6px;
+}
+.payment-icons{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:center;margin-top:12px}
+.payment-icon{background:var(--light);border:1px solid var(--border);border-radius:5px;padding:5px 12px;font-size:11px;font-weight:700;color:var(--navy)}
+.secure-note{text-align:center;font-size:11px;color:var(--gray);margin-top:10px;display:flex;align-items:center;justify-content:center;gap:5px}
+
+/* ══════════════════════════════════
+   COUNTDOWN (compact)
+══════════════════════════════════ */
+.cd-bar{
+  display:inline-flex;align-items:center;gap:12px;
+  background:rgba(220,38,38,.12);
+  border:1px solid rgba(220,38,38,.35);
+  border-radius:8px;padding:10px 20px;
+  margin-bottom:28px;
+}
+.cd-bar span{font-family:'Montserrat',sans-serif;font-weight:700;font-size:14px;color:var(--white)}
+.cd-bar .cd-time{color:var(--orange)}
+
+/* ══════════════════════════════════
+   OBJECTIONS — SLIM VERSION
+══════════════════════════════════ */
+.obj-section{background:var(--white);padding:52px 20px}
+.obj-inner{max-width:720px;margin:0 auto;text-align:center}
+.obj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:30px;text-align:left}
+.obj-card{background:var(--off);border-radius:10px;padding:18px;border:1px solid var(--border);border-top:3px solid var(--orange)}
+.obj-q{font-family:'Montserrat',sans-serif;font-weight:800;font-size:13px;color:var(--navy-dark);margin-bottom:8px}
+.obj-a{font-size:13px;color:var(--gray);line-height:1.65}
+
+/* ══════════════════════════════════
+   EXIT POPUP
+══════════════════════════════════ */
+.popup-overlay{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,.8);z-index:10000;
+  padding:20px;overflow-y:auto;
+  align-items:flex-start;justify-content:center;
+  backdrop-filter:blur(4px);
+}
+.popup-overlay.active{display:flex}
+.popup-box{
+  background:var(--white);border-radius:16px;
+  max-width:620px;width:100%;margin:30px auto;
+  overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.6);position:relative;
+}
+.popup-close{
+  position:absolute;top:12px;right:14px;
+  width:30px;height:30px;border-radius:50%;
+  background:rgba(255,255,255,.15);color:#fff;
+  border:none;font-size:16px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .15s;z-index:1;
+}
+.popup-close:hover{background:var(--red)}
+.popup-hdr{
+  background:linear-gradient(135deg,var(--navy-dark),var(--navy));
+  color:#fff;padding:28px 44px 22px;text-align:center;
+}
+.popup-hdr h2{
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  font-size:clamp(17px,3vw,24px);text-transform:uppercase;line-height:1.25;margin-bottom:8px;
+}
+.popup-hdr h2 span{color:var(--orange)}
+.popup-hdr p{color:rgba(255,255,255,.6);font-size:13px}
+.popup-body{padding:24px;background:#f9fafb}
+
+/* ── FOOTER ── */
+footer{background:var(--navy-dark);color:#374151;text-align:center;padding:20px;font-size:11px}
+footer a{color:#4b5563;text-decoration:none}
+footer a:hover{color:var(--orange)}
+.disclaimer{background:#f3f4f6;padding:36px 20px;border-top:1px solid var(--border)}
+.disclaimer p{max-width:820px;margin:0 auto;font-size:11px;color:#9ca3af;line-height:1.8;text-align:center}
+.disclaimer p+p{margin-top:8px}
+</style>
+</head>
+<body>
+
+<!-- STICKY MOBILE CTA -->
+<div class="sticky-mob">
+  <a href="#checkout" onclick="return scrollTo('checkout')">⚡ CLAIM MY $197 SPOT RIGHT NOW →</a>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- TOP BANNER -->
+<!-- ══════════════════════════════════════════ -->
+<div class="wait-banner">
+  ⚠️ &nbsp;WAIT — Before You Go. <span>We Cut the Price by $100 Just for You.</span>&nbsp; This Page Disappears When You Leave. ⚠️
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- HERO -->
+<!-- ══════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-inner">
+
+    <div class="mistake-label">🚨 Special One-Time Offer — Not Available Anywhere Else</div>
+
+    <h1>
+      <span class="cross">You Just Left $2,300 on the Table.</span>
+      We're Bringing It Back —<br>
+      <span class="reveal">For $197.</span>
+    </h1>
+
+    <p class="hero-sub">
+      You saw the offer. You didn't grab it. That's okay.<br>
+      <strong>Here's your second chance — at an even lower price.</strong><br>
+      The full Amazon + Walmart + TikTok Framework. Right now. $197.
+    </p>
+
+    <!-- PRICE DISPLAY -->
+    <div class="price-smash">
+      <div class="was-row">
+        <span class="was-label">Original Price</span>
+        <span class="was-amount">$2,497</span>
+      </div>
+      <div class="strikerow">
+        <span class="strike297">$297</span>
+        <span class="strike-label">July 4th price — gone</span>
+      </div>
+      <div class="now-row">
+        <span class="now-label">Your Price Right Now</span>
+        <span class="now-amount">$197</span>
+      </div>
+      <div class="saving-pill">🎉 You Save $2,300 — Today Only</div>
+    </div>
+
+    <!-- COUNTDOWN -->
+    <div class="cd-bar">
+      <span>⏰</span>
+      <span>This price expires in: <span class="cd-time" id="cd-display">23:59:59</span></span>
+    </div>
+
+    <!-- CTA -->
+    <div style="text-align:center">
+      <a href="#checkout" class="cta-btn" onclick="return scrollTo('checkout')">
+        ⚡ YES — I WANT ACCESS FOR $197 →
+      </a>
+      <p class="cta-note">🔒 <span>Secure SSL Checkout</span> &nbsp;|&nbsp; Instant Access &nbsp;|&nbsp; Satisfaction Guaranteed</p>
+    </div>
+
+    <div class="trust-row">
+      <div class="trust-item"><span>🔒</span>Secure Checkout</div>
+      <div class="trust-item"><span>💳</span>All Cards + PayPal</div>
+      <div class="trust-item"><span>✅</span>Instant Access</div>
+      <div class="trust-item"><span>🛡️</span>Guarantee Included</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- WHY THIS EXISTS -->
+<!-- ══════════════════════════════════════════ -->
+<section class="why-section">
+  <div class="why-inner">
+    <span class="section-eyebrow">Why This Page Exists</span>
+    <h2 class="why-title">You Were <span>This Close.</span><br>We Want You Inside.</h2>
+    <p class="why-body">
+      Luqman built the C2C Framework so that <em>more</em> people could access this —
+      not fewer. If $297 was the barrier, that's a problem he wants to fix.
+      So here it is. <strong>The full program. Every module. Every bonus. For $197.</strong>
+      One time. No recurring fees. No hidden charges. Just the system that
+      has helped 4,750+ people build real income on Amazon and Walmart.
+    </p>
+
+    <!-- WHAT YOU GET vs WHAT YOU MISS -->
+    <div class="compare-grid">
+      <div class="compare-card no">
+        <span class="compare-tag">If You Leave Now</span>
+        <ul class="compare-list">
+          <li>Same job. Same income.</li>
+          <li>Still no Amazon business</li>
+          <li>No system to follow</li>
+          <li>No coach in your corner</li>
+          <li>Price goes back to $2,497</li>
+        </ul>
+      </div>
+      <div class="compare-card yes">
+        <span class="compare-tag">If You Join for $197</span>
+        <ul class="compare-list">
+          <li>Full 8-module framework</li>
+          <li>Amazon + Walmart + TikTok</li>
+          <li>Step-by-step system</li>
+          <li>Onboarding call with Luqman</li>
+          <li>You save $2,300 today</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:28px">
+      <a href="#checkout" class="cta-btn" onclick="return scrollTo('checkout')"
+        style="max-width:460px;background:linear-gradient(135deg,#FF9900,#FFB347,#FF9900)">
+        I WANT IT — TAKE ME TO $197 CHECKOUT →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- WHAT'S INCLUDED -->
+<!-- ══════════════════════════════════════════ -->
+<section class="includes-section">
+  <div class="includes-inner">
+    <span class="section-eyebrow" style="border-color:rgba(255,153,0,.3)">Everything Inside</span>
+    <h2 class="includes-title">The Full <span>C2C Framework</span><br>— All of It, For $197</h2>
+    <p class="includes-sub">Not a stripped-down version. Not a trial. The complete program.</p>
+
+    <div class="include-row">
+      <div class="include-icon">📦</div>
+      <div class="include-text">
+        <strong>Module 1 — Business Setup Mastery</strong>
+        <span>Set up your Amazon + Walmart business the right way from day one</span>
+      </div>
+      <div class="include-value">$497</div>
+    </div>
+    <div class="include-row">
+      <div class="include-icon">🏆</div>
+      <div class="include-text">
+        <strong>Module 2 — Brand Certification Blueprint</strong>
+        <span>Get approved by real brands to sell name-brand products</span>
+      </div>
+      <div class="include-value">$697</div>
+    </div>
+    <div class="include-row">
+      <div class="include-icon">🎯</div>
+      <div class="include-text">
+        <strong>Module 3 — Winning Product Research System</strong>
+        <span>Find where big brands source their inventory — and copy it</span>
+      </div>
+      <div class="include-value">$397</div>
+    </div>
+    <div class="include-row">
+      <div class="include-icon">🔄</div>
+      <div class="include-text">
+        <strong>Module 4 — FBA + FBM Combination Framework</strong>
+        <span>The secret strategy to maximize margins and sales at the same time</span>
+      </div>
+      <div class="include-value">$497</div>
+    </div>
+    <div class="include-row">
+      <div class="include-icon">🛒</div>
+      <div class="include-text">
+        <strong>Module 5 — Walmart Expansion System</strong>
+        <span>Add Walmart as a second income stream with zero extra sourcing</span>
+      </div>
+      <div class="include-value">$397</div>
+    </div>
+    <div class="include-row">
+      <div class="include-icon">📱</div>
+      <div class="include-text">
+        <strong>Module 6 — TikTok Shop Framework (NEW)</strong>
+        <span>A third platform. Same products. Massive organic reach.</span>
+      </div>
+      <div class="include-value">$497</div>
+    </div>
+    <div class="include-row">
+      <div class="include-icon">🤖</div>
+      <div class="include-text">
+        <strong>Module 7 — AI Organic Ranking Framework</strong>
+        <span>Rank on Amazon + Walmart search without spending on ads</span>
+      </div>
+      <div class="include-value">$297</div>
+    </div>
+    <div class="include-row">
+      <div class="include-icon">🚀</div>
+      <div class="include-text">
+        <strong>Module 8 — Scale, Automate &amp; Delegate</strong>
+        <span>Build systems so the business runs without you</span>
+      </div>
+      <div class="include-value">$497</div>
+    </div>
+    <div class="include-row" style="border-left-color:var(--gold)">
+      <div class="include-icon">🎬</div>
+      <div class="include-text">
+        <strong>BONUS — Orlando Conference Recordings</strong>
+        <span>Attendees paid $10,000 per ticket. Yours free today.</span>
+      </div>
+      <div class="include-value">$10,000</div>
+    </div>
+    <div class="include-row" style="border-left-color:var(--gold)">
+      <div class="include-icon">👥</div>
+      <div class="include-text">
+        <strong>BONUS — Private Mastermind Community</strong>
+        <span>Active Amazon + Walmart sellers. Support every step.</span>
+      </div>
+      <div class="include-value">$997</div>
+    </div>
+    <div class="include-row" style="border-left-color:var(--gold)">
+      <div class="include-icon">📞</div>
+      <div class="include-text">
+        <strong>BONUS — Group Onboarding Call with Luqman</strong>
+        <span>Your personal 30-day roadmap, built live on a group call</span>
+      </div>
+      <div class="include-value">$497</div>
+    </div>
+
+    <!-- VALUE SUMMARY -->
+    <div class="value-summary">
+      <div class="value-line"><span>Total Real-World Value</span><span class="val">$15,067</span></div>
+      <div class="value-line"><span>July 4th Price (Expired)</span><span class="val" style="text-decoration:line-through;color:rgba(255,255,255,.3)">$297</span></div>
+      <div class="value-line today"><span>Your Price Right Now</span><span class="val">$197</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- SOCIAL PROOF -->
+<!-- ══════════════════════════════════════════ -->
+<section class="proof-section">
+  <div class="proof-inner">
+    <span class="section-eyebrow">Real Results</span>
+    <h2 class="why-title">Over <span>4,750 Students</span> Can't Be Wrong</h2>
+
+    <div class="proof-row">
+      <div class="proof-stat"><div class="num">4,750+</div><div class="lbl">Students Enrolled</div></div>
+      <div class="proof-stat"><div class="num">30 Days</div><div class="lbl">Avg. First Sale</div></div>
+      <div class="proof-stat"><div class="num">3</div><div class="lbl">Platforms Covered</div></div>
+      <div class="proof-stat"><div class="num">15 Yrs</div><div class="lbl">Luqman Selling</div></div>
+    </div>
+
+    <div class="testi-mini">
+      <div class="testi-stars">★★★★★</div>
+      <p>"I can't believe the transformation. This framework is pure genius. I went from having zero Amazon knowledge to making consistent sales within weeks."</p>
+      <div class="name">Waheed — Verified C2C Framework Student</div>
+    </div>
+    <div class="testi-mini">
+      <div class="testi-stars">★★★★★</div>
+      <p>"My daily earnings didn't just grow — they skyrocketed. I went from steady progress to an incredible leap almost overnight. Worth every penny and more."</p>
+      <div class="name">Verified C2C Mastermind Member</div>
+    </div>
+    <div class="testi-mini">
+      <div class="testi-stars">★★★★★</div>
+      <p>"I sold 30 units during training. DURING training. Before I even finished the modules. The system just works."</p>
+      <div class="name">Verified C2C Mastermind Member</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- OBJECTIONS — SLIM -->
+<!-- ══════════════════════════════════════════ -->
+<section class="obj-section">
+  <div class="obj-inner">
+    <span class="section-eyebrow">Quick Answers</span>
+    <h2 class="why-title">Still Wondering If<br><span>This Is For You?</span></h2>
+    <div class="obj-grid">
+      <div class="obj-card">
+        <div class="obj-q">😰 "I have no experience."</div>
+        <div class="obj-a">Good. Most of Luqman's best students started with zero. The framework is built for beginners. No experience needed.</div>
+      </div>
+      <div class="obj-card">
+        <div class="obj-q">💸 "Is $197 still a lot for me?"</div>
+        <div class="obj-a">One profitable product on Amazon pays this back in its first week. This is not a cost. It is the start of a business.</div>
+      </div>
+      <div class="obj-card">
+        <div class="obj-q">⏰ "I don't have time."</div>
+        <div class="obj-a">Module 1 is 90 minutes. Most students start in the evenings. Once set up, Module 8 shows you how to delegate and step back.</div>
+      </div>
+      <div class="obj-card">
+        <div class="obj-q">🌍 "Does this work in UK/Canada?"</div>
+        <div class="obj-a">Yes. The framework works for students in the US, UK, and Canada. Both Amazon and Walmart are fully supported.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- GUARANTEE -->
+<!-- ══════════════════════════════════════════ -->
+<section class="guarantee-strip">
+  <div class="guarantee-inner">
+    <div class="guarantee-badge">
+      <div class="big">100%</div>
+      <div class="sm">Satisfaction</div>
+      <div class="sm">Guarantee</div>
+    </div>
+    <div class="guarantee-content">
+      <h3>Zero Risk. You're Fully Protected.</h3>
+      <p>Join the C2C Framework, go through the modules, and do the work. If you don't find real value — request a refund within the guarantee window. No drama. No questions. The risk is 100% on Luqman, not you. Your only job is to show up and execute.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- CHECKOUT -->
+<!-- ══════════════════════════════════════════ -->
+<section class="checkout-section" id="checkout">
+  <div style="max-width:620px;margin:0 auto 28px;text-align:center">
+    <span class="section-eyebrow" style="border-color:rgba(255,153,0,.3)">Secure Order</span>
+    <h2 style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(20px,3.5vw,32px);color:#fff;text-transform:uppercase;margin-bottom:8px;line-height:1.2">
+      This Is Your Last Chance<br>
+      <span style="color:var(--orange)">At $197.</span>
+    </h2>
+    <p style="color:rgba(255,255,255,.5);font-size:14px;margin-bottom:16px">When you leave this page, the offer is gone. No code. No replay. No exceptions.</p>
+    <div class="cd-bar" style="justify-content:center">
+      <span style="color:#fff">⏰</span>
+      <span style="color:#fff;font-family:'Montserrat',sans-serif;font-weight:700;font-size:14px">
+        Price expires in: <span class="cd-time" id="cd-display-2" style="color:var(--orange)">23:59:59</span>
+      </span>
+    </div>
+  </div>
+
+  <div class="checkout-box">
+    <div class="checkout-header">
+      <h2>⚡ Downsell — Special Access at $197</h2>
+      <div class="checkout-price">
+        <span class="was">$2,497</span>
+        <span style="font-size:20px;color:rgba(35,47,62,.4)">→</span>
+        <span class="mid">$297</span>
+        <span style="font-size:20px;color:rgba(35,47,62,.4)">→</span>
+        <span class="now">$197</span>
+        <span class="period">one-time</span>
+      </div>
+    </div>
+    <div class="checkout-body">
+
+      <!-- ORDER SUMMARY -->
+      <div class="order-summary">
+        <div class="os-row"><span>Amazon + Walmart + TikTok Framework (8 Modules)</span><span class="os-val">✓</span></div>
+        <div class="os-row"><span>AI Organic Ranking + All Bonuses</span><span class="os-val">✓ FREE</span></div>
+        <div class="os-row"><span>Conference Recordings ($10K Value)</span><span class="os-val">✓ FREE</span></div>
+        <div class="os-row"><span>Group Onboarding Call</span><span class="os-val">✓ FREE</span></div>
+        <div class="os-row"><span>Regular Price</span><span style="text-decoration:line-through;color:var(--gray)">$2,497</span></div>
+        <div class="os-row"><span>Special Downsell Discount</span><span style="color:var(--green);font-weight:700">-$2,300</span></div>
+        <div class="os-row"><span>Your Total Today</span><span class="os-val" style="font-size:18px">$197</span></div>
+      </div>
+
+      <!-- EMBED CHECKOUT HERE -->
+      <div class="checkout-placeholder">
+        <strong>[ EMBED YOUR $197 CHECKOUT FORM HERE ]</strong>
+        <p>Replace with your ClickFunnels order form, Stripe payment link, or checkout embed set to $197.</p>
+      </div>
+
+      <div class="payment-icons">
+        <div class="payment-icon">VISA</div>
+        <div class="payment-icon">Mastercard</div>
+        <div class="payment-icon">AMEX</div>
+        <div class="payment-icon">PayPal</div>
+        <div class="payment-icon">Discover</div>
+      </div>
+      <div class="secure-note">🔒 256-bit SSL · PCI-Compliant · Instant Access After Payment</div>
+    </div>
+  </div>
+
+  <!-- FINAL NUDGE -->
+  <div style="max-width:520px;margin:32px auto 0;text-align:center">
+    <p style="color:rgba(255,255,255,.35);font-size:13px;line-height:1.7">
+      Not sure? You're protected by the satisfaction guarantee.<br>
+      Try the full framework — if it's not for you, request a refund. No risk.
+    </p>
+    <p style="color:rgba(255,255,255,.25);font-size:12px;margin-top:16px">
+      Prefer to talk first? <a href="https://calendly.com/viraladmediacalendar/group-call" target="_blank"
+        style="color:var(--orange);font-weight:700;text-decoration:none">Book a free call with Luqman →</a>
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- EXIT POPUP -->
+<!-- ══════════════════════════════════════════ -->
+<div class="popup-overlay" id="exitPopup">
+  <div class="popup-box">
+    <button class="popup-close" onclick="closePopup()">✕</button>
+    <div class="popup-hdr">
+      <div style="font-size:32px;margin-bottom:10px">🤝</div>
+      <h2>Before You Go — Talk to <span>Luqman Directly.</span></h2>
+      <p>Book a free discovery call. Get your questions answered. Zero pressure.</p>
+    </div>
+    <div class="popup-body">
+      <div style="text-align:center;margin-bottom:16px">
+        <div style="background:#fff3cd;border:1px solid #ffc107;border-radius:8px;padding:10px 16px;display:inline-block;font-size:12px;color:#856404;font-weight:700">
+          ⚠️ The $197 price is still active on this page — but disappears when you leave.
+        </div>
+      </div>
+      <div class="calendly-inline-widget"
+        data-url="https://calendly.com/viraladmediacalendar/group-call?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=FF9900"
+        style="min-width:280px;height:600px;">
+      </div>
+      <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+      <p style="text-align:center;font-size:12px;color:#9ca3af;margin-top:12px">
+        Or <a href="#checkout" onclick="closePopup();scrollTo('checkout')" style="color:var(--orange);font-weight:700">go straight to the $197 checkout →</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- DISCLAIMER + FOOTER -->
+<!-- ══════════════════════════════════════════ -->
+<section class="disclaimer">
+  <p>This site is not affiliated with or endorsed by Facebook™, YouTube™, Amazon™, Walmart™, or TikTok™ in any way.</p>
+  <p>EARNINGS DISCLAIMER: Results mentioned are not typical. Individual results will vary based on effort, experience, market conditions, and other factors. No income is guaranteed. All examples shown are not a promise of earnings. Always conduct your own due diligence before any financial decision.</p>
+  <p>© 2026 Viral Ad Media, LLC · All Rights Reserved · <a href="#">Privacy Policy</a> · <a href="#">Terms</a> · <a href="#">Earnings Disclaimer</a></p>
+</section>
+<footer>
+  <p>© 2026 C2C AMZ Framework · Viral Ad Media, LLC · Houston, Texas, USA · <a href="mailto:viraladmediacontent@gmail.com">viraladmediacontent@gmail.com</a></p>
+</footer>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- JS -->
+<!-- ══════════════════════════════════════════ -->
+<script>
+// ── COUNTDOWN (24-hour window, persists in session) ──
+function getExpiry() {
+  const KEY = 'c2c_downsell_expiry';
+  let expiry = sessionStorage.getItem(KEY);
+  if (!expiry) {
+    expiry = Date.now() + 24 * 60 * 60 * 1000;
+    sessionStorage.setItem(KEY, expiry);
+  }
+  return parseInt(expiry);
+}
+function fmtTime(ms) {
+  if (ms <= 0) return '00:00:00';
+  const t = Math.floor(ms / 1000);
+  const h = String(Math.floor(t / 3600)).padStart(2,'0');
+  const m = String(Math.floor((t % 3600) / 60)).padStart(2,'0');
+  const s = String(t % 60).padStart(2,'0');
+  return `${h}:${m}:${s}`;
+}
+function tick() {
+  const str = fmtTime(getExpiry() - Date.now());
+  document.querySelectorAll('#cd-display, #cd-display-2').forEach(el => { if(el) el.textContent = str; });
+}
+setInterval(tick, 1000); tick();
+
+// ── SCROLL ──
+function scrollTo(id) {
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  return false;
+}
+
+// ── EXIT INTENT ──
+let shown = false;
+document.addEventListener('mouseout', function(e) {
+  if (shown) return;
+  if (!e.relatedTarget && e.clientY <= 0) {
+    shown = true;
+    document.getElementById('exitPopup').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+});
+let lastY = window.scrollY;
+window.addEventListener('scroll', function() {
+  if (shown) return;
+  if (window.scrollY < lastY && window.scrollY < 100 && window.innerWidth < 768) {
+    shown = true;
+    document.getElementById('exitPopup').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  lastY = window.scrollY;
+});
+function closePopup() {
+  document.getElementById('exitPopup').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.getElementById('exitPopup').addEventListener('click', function(e) {
+  if (e.target === this) closePopup();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closePopup();
+});
+</script>
+</body>
+</html>
